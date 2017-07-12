@@ -43,7 +43,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Data Open Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_open')?>"><i class="fa fa-circle-o"></i> Import Data Open Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_open')?>"><i class="fa fa-circle-o"></i> Data Open Ticket</a></li>
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Report Open Ticket
                     <span class="pull-right-container">
@@ -51,7 +52,7 @@
                     </span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Month</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_month_open')?>"><i class="fa fa-circle-o"></i> Month</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i> Year to Date</a></li>
                   </ul>
                 </li>
@@ -64,7 +65,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Data Close Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_close')?>"><i class="fa fa-circle-o"></i> Import Data Close Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_close')?>"><i class="fa fa-circle-o"></i> Data Close Ticket</a></li>
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Report Close Ticket
                     <span class="pull-right-container">
@@ -86,9 +88,16 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="<?=base_url('index.php/HrPerformance/')?>">
+          <a href="">
             <i class="fa fa-user"></i> <span>HR Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/HrPerformance/import/')?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> List Data</a></li>
+          </ul>
         </li>
         <li class="treeview">
           <a href="#">
@@ -136,7 +145,7 @@
             </li>
           </ul>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="<?=base_url("index.php/SearchSN/");?>">
             <i class="fa fa-search"></i> <span>Search NTE</span>
           </a>

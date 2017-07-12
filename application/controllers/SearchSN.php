@@ -18,46 +18,14 @@ class SearchSN extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function coba()
-	{
-		$data['data_sn'] 	= $this->search->get_all_data();
-		$this->load->view('data', $data);
-	}
-
 	public function search_sn()
 	{
-		$sn 		= $this->input->post('sn');
-		$results 	= $this->search->get_search_data($sn);
-
-		$no = 1;
-		foreach ($results as $result) {
-			echo '<tr>
-		    <td>'.$no.'</td>
-		    <td>'.$result["SN"].'</td>
-		    <td>'.$result["Nama_Vendor"].'</td>
-	    	</tr>';
-	    	$no++;
-		}
-
-		  /*echo "<pre>";
-	      print_r($result);
-	      echo "</pre>";*/
-
-		/*$this->load->view('header');
-		$this->load->view('search_sn', $data);
-		$this->load->view('footer');*/
-	}
-
-	public function search_vendor()
-	{
-		$vendor 	= $this->input->post('vendor');
-
-		$data['data_sn']	= $this->search->get_search_data_vendor($vendor);
-
-		  /*echo "<pre>";
-	      print_r($data);
-	      echo "</pre>";*/
-
-		$this->load->view('search_sn', $data);
+			$sn 				= $this->input->post('sn');
+			$data['no_sn']		= $sn;
+			$data['data_sn'] 	= $this->search->get_data($sn);	
+			$this->load->view('header');
+			$this->load->view('aside');
+			$this->load->view('search/result_search_sn', $data);
+			$this->load->view('footer');	
 	}
 }
