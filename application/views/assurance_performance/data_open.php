@@ -1,9 +1,9 @@
-<!-- Content Wrapper. Contains page content -->
+<!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Open
+        Data Open Assurance Performance
         <!--<small>advanced tables</small>-->
       </h1>
       <!--<ol class="breadcrumb">
@@ -17,63 +17,159 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box box-info">
-            <!-- /.box-header -->
-            <!-- form start -->
-
-            <form method="POST" action="" class="formSearch">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Masukkan Nomor NTE</label>
-
-                  <div class="col-sm-10">
-                    <input id="nosn" type="text" name="sn" placeholder="No NTE" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
-              <!-- /.box-footer -->
-            </form>
-          </div>
-
           <div class="box">
             <!--<div class="box-header">
               <h3 class="box-title">Hover Data Table</h3>
             </div>-->
             <!-- /.box-header -->
             <div class="box-body">
+              <div style="overflow-x: auto;">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Serial Number</th>
-                  <th>Nama Vendor</th>
+                  <tr>
+                  <th>No.</th>
+                  <th>Incident</th>
+                  <th>Customer Name</th>
+                  <!-- <th>Summary</th> -->
+                  <th>Owner Group</th>
+                  <th>Owner</th>
+                  <th>Last Updated Work Log</th>
+                  <th>Last Work Log Date</th>
+                  <th>Source</th>
+                  <th>Segment</th>
+                  <th>Channel</th>
+                  <th>Customer Segment</th>
+                  <th>Service ID</th>
+                  <th>Service No</th>
+                  <th>Service Type</th>
+                  <th>Top Priority</th>
+                  <th>SLG</th>
+                  <th>Technology</th>
+                  <th>Datek</th>
+                  <th>RK Name</th>
+                  <th>Induk Gamas</th>
+                  <th>Reported Date</th>
+                  <th>TTR Customer</th>
+                  <th>TTR Nasional</th>
+                  <th>TTR Regional</th>
+                  <th>TTR Witel</th>
+                  <th>TTR Mitra</th>
+                  <th>TTR Agent</th>
+                  <th>Status</th>
+                  <th>OSM Resolved Code</th>
+                  <th>Last Update Ticket</th>
+                  <th>Status Date</th>
+                  <th>Closed/Reopen By</th>
+                  <th>Resolved By</th>
+                  <th>Workzone</th>
+                  <th>MITRA/PA</th>
+                  <th>Witel</th>
+                  <th>Regional</th>
+                  <th>Incident's Symptom</th>
+                  <th>Solutions's Segment</th>
+                  <th>Actual Solution</th>
                 </tr>
                 </thead>
                 <tbody class="data">
                   <?php
                     $no = 0;
-                        foreach($data_sn as $u){
+                        foreach($data_open as $u){
                           $no++;
 
                     ?>
                     <tr>
                       <td><?= $no;?></td>
-                      <td><?= $u['SN'];?></td>
-                      <td><?= $u['Nama_Vendor'];?></td>
+                      <td><?= $u['incident'];?></td>
+                      <td><?= $u['customer_name'];?></td>
+                      <td><?= $u['owner_group'];?></td>
+                      <td><?= $u['owner'];?></td>
+                      <td><?= $u['last_update_work_log'];?></td>
+                      <td><?= $u['last_update_work_log_date'];?></td>
+                      <td><?= $u['source'];?></td>
+                      <td><?= $u['segment'];?></td>
+                      <td><?= $u['channel'];?></td>
+                      <td><?= $u['customer_segment'];?></td>
+                      <td><?= $u['service_id'];?></td>
+                      <td><?= $u['service_no'];?></td>
+                      <td><?= $u['service_type'];?></td>
+                      <td><?= $u['top_priority'];?></td>
+                      <td><?= $u['slg'];?></td>
+                      <td><?= $u['technology'];?></td>
+                      <td><?= $u['datek'];?></td>
+                      <td><?= $u['rk_name'];?></td>
+                      <td><?= $u['induk_gamas'];?></td>
+                      <td><?= $u['reported date'];?></td>
+                      <td><?= $u['ttr_customer'];?></td>
+                      <td><?= $u['ttr_nasional'];?></td>
+                      <td><?= $u['ttr_regional'];?></td>
+                      <td><?= $u['ttr_witel'];?></td>
+                      <td><?= $u['ttr_mitra'];?></td>
+                      <td><?= $u['ttr_agent'];?></td>
+                      <td><?= $u['status'];?></td>
+                      <td><?= $u['osm_resolved_code'];?></td>
+                      <td><?= $u['last_updated_ticket'];?></td>
+                      <td><?= $u['status_date'];?></td>
+                      <td><?= $u['closed_reopen_by'];?></td>
+                      <td><?= $u['resolved_by'];?></td>
+                      <td><?= $u['workzone'];?></td>
+                      <td><?= $u['mitra_pa'];?></td>
+                      <td><?= $u['witel'];?></td>
+                      <td><?= $u['regional'];?></td>
+                      <td><?= $u['incident_symptom'];?></td>
+                      <td><?= $u['solution_segment'];?></td>
+                      <td><?= $u['actual_solution'];?></td>
                     </tr>
                     <?php
                     }
                   ?>
                 </tbody>
                 <tfoot>
-                <tr>
+                  <tr>
                   <th>No.</th>
-                  <th>Serial Number</th>
-                  <th>Nama Vendor</th>
+                  <th>Incident</th>
+                  <th>Customer Name</th>
+                  <!-- <th>Summary</th> -->
+                  <th>Owner Group</th>
+                  <th>Owner</th>
+                  <th>Last Updated Work Log</th>
+                  <th>Last Work Log Date</th>
+                  <th>Source</th>
+                  <th>Segment</th>
+                  <th>Channel</th>
+                  <th>Customer Segment</th>
+                  <th>Service ID</th>
+                  <th>Service No</th>
+                  <th>Service Type</th>
+                  <th>Top Priority</th>
+                  <th>SLG</th>
+                  <th>Technology</th>
+                  <th>Datek</th>
+                  <th>RK Name</th>
+                  <th>Induk Gamas</th>
+                  <th>Reported Date</th>
+                  <th>TTR Customer</th>
+                  <th>TTR Nasional</th>
+                  <th>TTR Regional</th>
+                  <th>TTR Witel</th>
+                  <th>TTR Mitra</th>
+                  <th>TTR Agent</th>
+                  <th>Status</th>
+                  <th>OSM Resolved Code</th>
+                  <th>Last Update Ticket</th>
+                  <th>Status Date</th>
+                  <th>Closed/Reopen By</th>
+                  <th>Resolved By</th>
+                  <th>Workzone</th>
+                  <th>MITRA/PA</th>
+                  <th>Witel</th>
+                  <th>Regional</th>
+                  <th>Incident's Symptom</th>
+                  <th>Solutions's Segment</th>
+                  <th>Actual Solution</th>
                 </tr>
                 </tfoot>
               </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -85,4 +181,4 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.content-wrapper

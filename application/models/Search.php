@@ -10,6 +10,15 @@
       return $query->result_array();
     }
 
+    function get_data($sn){
+      $query  = $this->db
+                ->select('*')
+                ->from('data_sn')
+                ->like('sn', $sn)
+                ->get();;
+      return $query->result_array();
+    }
+
     function get_search_data($data, $vendor){
       if($vendor == ""){
         $sn  = $this->db

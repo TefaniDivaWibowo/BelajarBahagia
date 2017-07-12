@@ -21,19 +21,23 @@
             <!-- /.box-header -->
             <!-- form start -->
 
-            <form method="POST" action="" class="formSearch">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Masukkan Nomor NTE</label>
+                
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="padding-top: 7px;">Masukkan Nomor NTE</label>
 
-                  <div class="col-sm-10">
-                    <input id="nosn" type="text" name="sn" placeholder="No NTE" class="form-control">
+                <form method="POST" action="<?=base_url('index.php/SearchSN/search_sn')?>" >
+                  <div class="col-sm-7">
+                    <input type="text" name="sn" placeholder="No NTE" class="form-control">
                   </div>
+                  <div class="col-sm-1">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Search" >
+                  </div>
+                </form>
                 </div>
               </div>
               <!-- /.box-body -->
               <!-- /.box-footer -->
-            </form>
           </div>
 
           <div class="box">
@@ -42,7 +46,7 @@
             </div>-->
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="data_sn" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>No</th>
@@ -59,8 +63,8 @@
                     ?>
                     <tr>
                       <td><?= $no;?></td>
-                      <td><?= $u['SN'];?></td>
-                      <td><?= $u['Nama_Vendor'];?></td>
+                      <td><?= $u['sn'];?></td>
+                      <td><?= $u['nama_vendor'];?></td>
                     </tr>
                     <?php
                     }

@@ -1,8 +1,6 @@
   <?php
     foreach ($data_hr as $a) {
   ?>
-   
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -11,6 +9,9 @@
       <h1>
         User Profile
       </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-angle-left"></i> Kembali</a></li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -29,8 +30,7 @@
                 echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('assets/dist/img/foto/default.png')."' alt='User profile picture' height='200' width='200'>";
               }
             ?>
-              <br>
-              <a href="#" class="btn btn-primary btn-block"><b>Edit Photo</b></a>
+              <!--<a href="#" class="btn btn-primary btn-block" ><b>Edit Photo</b></a>-->
             </div>
             <!-- /.box-body -->
           </div>
@@ -41,7 +41,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">Detail</a></li>
-              <li><a href="#timeline" data-toggle="tab">History</a></li>
+              <li><a href="#timeline" data-toggle="tab">Document</a></li>
               <!-- <li><a href="#settings" data-toggle="tab">Settings</a></li> -->
             </ul>
             <div class="tab-content">
@@ -59,119 +59,117 @@
                         <label class="col-sm-2 control-label">NIK</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="nik" value="<?=$a['nik'];?>" class="form-control" id="inputEmail3" placeholder="NIK" readonly="NIK">
+                          <input type="text" name="nik" value="<?=$a['nik'];?>" class="form-control" id="inputEmail3" placeholder="NIK" readonly="NIK" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">NAMA</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="nama" value="<?=$a['nama'];?>" class="form-control" id="inputPassword3" placeholder="Nama">
+                          <input type="text" name="nama" value="<?=$a['nama'];?>" class="form-control" id="inputPassword3" placeholder="Nama" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">PSA</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="psa" value="<?=$a['psa'];?>" class="form-control" id="inputPassword3" placeholder="PSA">
+                          <input type="text" name="psa" value="<?=$a['psa'];?>" class="form-control" id="inputPassword3" placeholder="PSA" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">WITEL</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="witel" value="<?=$a['witel'];?>" class="form-control" id="inputPassword3" placeholder="Witel">
+                          <input type="text" name="witel" value="<?=$a['witel'];?>" class="form-control" id="inputPassword3" placeholder="Witel" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">TERITORY</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="teritory" value="<?=$a['teritory'];?>" class="form-control" id="inputPassword3" placeholder="Teritory">
+                          <input type="text" name="teritory" value="<?=$a['teritory'];?>" class="form-control" id="inputPassword3" placeholder="Teritory" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">REGIONAL</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="regional" value="<?=$a['regional'];?>" class="form-control" id="inputPassword3" placeholder="Regional">
+                          <input type="text" name="regional" value="<?=$a['regional'];?>" class="form-control" id="inputPassword3" placeholder="Regional" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">LEVEL</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="level" value="<?=$a['level'];?>" class="form-control" id="inputPassword3" placeholder="Level">
+                          <input type="text" name="level" value="<?=$a['level'];?>" class="form-control" id="inputPassword3" placeholder="Level" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">BIZPART ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="bizpart_id" value="<?=$a['bizpart_id'];?>" class="form-control" id="inputPassword3" placeholder="Bizpart Id">
+                          <input type="text" name="bizpart_id" value="<?=$a['bizpart_id'];?>" class="form-control" id="inputPassword3" placeholder="Bizpart Id" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">DIREKTORAT</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="direktorat" value="<?=$a['direktorat'];?>" class="form-control" id="inputPassword3" placeholder="Direktorat">
+                          <input type="text" name="direktorat" value="<?=$a['direktorat'];?>" class="form-control" id="inputPassword3" placeholder="Direktorat" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">UNIT</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="unit" value="<?=$a['unit'];?>" class="form-control" id="inputPassword3" placeholder="Unit">
+                          <input type="text" name="unit" value="<?=$a['unit'];?>" class="form-control" id="inputPassword3" placeholder="Unit" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">SUB UNIT</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="sub_unit" value="<?=$a['sub_unit'];?>" class="form-control" id="inputPassword3" placeholder="Sub Unit">
+                          <input type="text" name="sub_unit" value="<?=$a['sub_unit'];?>" class="form-control" id="inputPassword3" placeholder="Sub Unit" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">GROUP</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="group" value="<?=$a['group'];?>" class="form-control" id="inputPassword3" placeholder="Group">
+                          <input type="text" name="group" value="<?=$a['group'];?>" class="form-control" id="inputPassword3" placeholder="Group" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">SUB GROUP</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="sub_group" value="<?=$a['sub_group'];?>" class="form-control" id="inputPassword3" placeholder="Sub Group">
+                          <input type="text" name="sub_group" value="<?=$a['sub_group'];?>" class="form-control" id="inputPassword3" placeholder="Sub Group" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">GROUP FUNGSI</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="group_fungsi" value="<?=$a['group_fungsi'];?>" class="form-control" id="inputPassword3" placeholder="Group Fungsi">
+                          <input type="text" name="group_fungsi" value="<?=$a['group_fungsi'];?>" class="form-control" id="inputPassword3" placeholder="Group Fungsi" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">COST CENTER</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="cost_center" value="<?=$a['cost_center'];?>" class="form-control" id="inputPassword3" placeholder="Cost Center">
+                          <input type="text" name="cost_center" value="<?=$a['cost_center'];?>" class="form-control" id="inputPassword3" placeholder="Cost Center" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">STATUS PGS</label>
 
                         <div class="col-sm-10">
-                          <input type="text" name="status_pgs" value="<?=$a['status_pgs'];?>" class="form-control" id="inputPassword3" placeholder="Status PGS">
+                          <input type="text" name="status_pgs" value="<?=$a['status_pgs'];?>" class="form-control" id="inputPassword3" placeholder="Status PGS" style="border: none; border-color: transparent;">
                         </div>
                       </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                      <!--<button type="submit" class="btn btn-default">Cancel</button>-->
-                      <input type="submit" name="submit" value="Edit" class="btn btn-info pull-right">
                     </div>
                     <!-- /.box-footer -->
                   </form>

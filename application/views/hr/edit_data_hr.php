@@ -2,15 +2,50 @@
     foreach ($data_hr as $a) {
   ?>
    
+  <style type="text/css">
+    .file-upload {
+      display: block;
+      width: 100%;
+    }
 
+    .file-upload__label {
+      display: block;
+      padding: 1em 2em;
+      color: #fff;
+      background: #222;
+      border-radius: .4em;
+      transition: background .3s;
+      
+      &:hover {
+         cursor: pointer;
+         background: #000;
+      }
+    }
+        
+    .file-upload__input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        font-size: 1;
+        width:100%;
+        height: 100%;
+        opacity: 0;
+    }
+  </style>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        User Profile
+        Edit User Profile
       </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-angle-left"></i> Kembali</a></li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -29,8 +64,20 @@
                 echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('assets/dist/img/foto/default.png')."' alt='User profile picture' height='200' width='200'>";
               }
             ?>
-              <br>
-              <a href="#" class="btn btn-primary btn-block"><b>Edit Photo</b></a>
+            <hr>
+              <div class="file-upload">
+                <form method="post" enctype="multipart/form-data" action="<?= base_url('perusahaan/up_gamlat');?>">
+                  <label for="upload" class="btn btn-primary btn-block">Edit Photo</label>
+                  <input id="upload" class="btn file-upload__input btn-block" type="file" name="filePhoto" style="text-align: center;">
+                  <input type="hidden" value="<?=$a['nik'];?>" name="id_user"/>
+                </form>
+                <!-- <form method="post" enctype="multipart/form-data" action="">
+                  <input type="file" class="btn btn-primary" name="fileLatar" id="fileLatar" />
+                  <input type="hidden" name="id_user"/>
+                  <br>
+                  <input type="submit" name="gambar" class="btn btn-primary" value="Jadikan Gambar Sampul"/>
+                </form> -->
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -39,11 +86,11 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">Detail</a></li>
-              <li><a href="#timeline" data-toggle="tab">History</a></li>
+            <!-- <ul class="nav nav-tabs"> -->
+              <!-- <li class="active"><a href="#activity" data-toggle="tab">Detail</a></li> -->
+              <!-- <li><a href="#timeline" data-toggle="tab">Document</a></li> -->
               <!-- <li><a href="#settings" data-toggle="tab">Settings</a></li> -->
-            </ul>
+            <!-- </ul> -->
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                   <form class="form-horizontal" method="POST" action="<?=base_url('index.php/HrPerformance/edit/')?>">
@@ -178,9 +225,9 @@
               </div>
 
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="timeline">
+              <!-- <div class="tab-pane" id="timeline"> -->
                 <!--body-->
-              </div>
+              <!-- </div> -->
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->

@@ -3,7 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
   <title>Project Web TA</title>
+=======
+  <title>Admin TA MALANG</title>
+  <!-- Icon -->
+  <link rel="icon" href="<?=base_url();?>assets/dist/img/logo.ico" type="image/ico">
+>>>>>>> a5d195e1e5e1c75c06b5f85717c7b76ad11e2c97
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
