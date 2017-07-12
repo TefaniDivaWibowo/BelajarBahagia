@@ -1,9 +1,9 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Telkom Akses</a>.</strong> All rights
+    <strong>Copyright &copy; 2017 <a href="http://telkomakses.com">Telkom Akses</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -218,11 +218,13 @@
 <script src="<?=base_url();?>assets/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url();?>assets/dist/js/demo.js"></script>
-
-<!-- Pagination -->
-<script type="text/javascript" href="//code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" href="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="<?=base_url();?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?=base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Select2 -->
+<script src="<?=base_url();?>assets/plugins/select2/select2.full.min.js"></script>
 <!-- page script -->
 
 <script type="text/javascript">
@@ -238,12 +240,14 @@
                     }
     });
   });
+</script>
 
-  $(document).ready(function() {
+<script type="text/javascript">
+$(document).ready(function() {
     $('#example').DataTable( {
         "pagingType": "full_numbers"
     } );
-  } );
+} );
 </script>
 </body>
 </html>

@@ -116,12 +116,118 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Infrastructure Delivery</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Assurance</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Provisioning Indihome</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Maintenance Infra Sup</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Infrastructure Service</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Service Delivery</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Infrastructure Delivery
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Migration
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/data_migrasi')?>"><i class="fa fa-circle-o"></i> Data Migration</a></li>
+                    <li><a href="<?= base_url('index.php/Revenue/form_migrasi')?>"><i class="fa fa-circle-o"></i> Form Migration</a></li>
+                  </ul>
+                </li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_mig')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Assurance
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('index.php/Revenue/data_ass')?>"><i class="fa fa-circle-o"></i> Data Assurance
+                  </a></li>
+                <li><a href="<?= base_url('index.php/Revenue/form_ass')?>"><i class="fa fa-circle-o"></i> Form Assurance</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_ass')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Provisioning Indihome
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('index.php/Revenue/data_psb')?>"><i class="fa fa-circle-o"></i> Data Provisioning
+                  </a></li>
+                <li><a href="<?= base_url('index.php/Revenue/form_psb')?>"><i class="fa fa-circle-o"></i> Form Provisioning</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_psb')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Maintenance Infra Sup
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('index.php/Revenue/data_mainis')?>"><i class="fa fa-circle-o"></i> Data Maintenance Infra Sup
+                  </a></li>
+                <li><a href="<?= base_url('index.php/Revenue/form_mainis')?>"><i class="fa fa-circle-o"></i> Form Maintenance Infra Sup</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_mainis')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Infrastructure Service
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Maintenance Access
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/data_main_access')?>"><i class="fa fa-circle-o"></i> Data Maintenance Access</a></li>
+                    <li><a href="<?= base_url('index.php/Revenue/form_main_access')?>"><i class="fa fa-circle-o"></i> Form Maintenance Access</a></li>
+                    <li><a href="<?= base_url('index.php/RevTarget/target_main_access')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Gamas & QE
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/data_gamas')?>"><i class="fa fa-circle-o"></i> Data Gamas & QE</a></li>
+                    <li><a href="<?= base_url('index.php/Revenue/form_gamas')?>"><i class="fa fa-circle-o"></i> Form Gamas & QE</a></li>
+                    <li><a href="<?= base_url('index.php/RevTarget/target_gamas')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+                  </ul>
+                </li>
+              </ul>            
+              </li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Service Delivery
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                </li><li><a href="<?= base_url('index.php/Revenue/data_sd')?>"><i class="fa fa-circle-o"></i> Data Service Delivery</a></li>
+                </li><li><a href="<?= base_url('index.php/Revenue/form_hem')?>"><i class="fa fa-circle-o"></i> HEM</a></li>
+                </li><li><a href="<?= base_url('index.php/Revenue/form_nodeb')?>"><i class="fa fa-circle-o"></i> Node B</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Prog Optimization PT2
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/form_pt2')?>"><i class="fa fa-circle-o"></i> Form PT2</a></li>
+                    <li><a href="<?= base_url('index.php/RevTarget/target_pt2')?>"><i class="fa fa-circle-o"></i> Input Target Rev</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Prog Optimization PT3
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/form_pt3')?>"><i class="fa fa-circle-o"></i> Form PT3</a></li>
+                    <li><a href="<?= base_url('index.php/RevTarget/target_pt3')?>"><i class="fa fa-circle-o"></i> Input Target Rev</a></li>
+                  </ul>
+              </ul> 
+            </li>
             <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Search
                     <span class="pull-right-container">
@@ -129,14 +235,14 @@
                     </span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> BA</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> All Data</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> BA</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
                   </ul>
             </li>
           </ul>
         </li>
-        <li class="active treeview">
+        <li> <!-- class="active treeview" -->
           <a href="<?=base_url("index.php/SearchSN/");?>">
             <i class="fa fa-search"></i> <span>Search NTE</span>
           </a>
