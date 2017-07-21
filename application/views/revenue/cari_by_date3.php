@@ -212,14 +212,7 @@
                     <td><?= $p['tgl_va'];?></td>
                     <td><?= $p['tgl_ps'];?></td>
                     <td><?= $p['hasil_cek_redaman'];?></td>
-                    <?php
-                      if($p['biaya'] != NULL ){?>
-                    <td><?= $p['biaya'];?></td>                       
-                        <?php } else{?>
-                    <td><a href="<?php echo base_url()."index.php/Revenue/update_bia/" . $p['id_rev'] ."";?>">Update biaya</a></td>
-                        <?php }
-                    ?>
-                    <!-- Pemisah php biaya & ba -->
+                    <td><?= $p['biaya'];?></td>
                     <?php
                       if($p['ba_rev'] != NULL ){?>
                         <td><a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a></td>                        
@@ -246,7 +239,6 @@
           <?php
             if(isset($_POST['oke'])){//to run PHP script on submit
             include "cari_by_date2.php";
-            
             }
           ?>
           <!-- /.box -->

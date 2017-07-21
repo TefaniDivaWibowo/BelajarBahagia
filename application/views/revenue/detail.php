@@ -193,12 +193,37 @@
         <div class="col-sm-12">
         <div class="box box-primary">
               <div class="box-body">
-              <div class="form-group">
-                  <label>Upload Berita Acara</label>
-                  <input type="file" name="ba_psb">
+                <?php               
+                    if($p['biaya'] != NULL ){?>
+                        <div class="form-group">
+                        <label class="col-sm-2 control-label">Total biaya
+                          Rp. <?= $p['biaya'];?></label>
+                        </div>    
+                        <?php } else{?>
+                        <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                    <a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Update Biaya</a></label>
+                          </div>
 
-                  <p class="help-block">Upload berita acara dengan format jpg atau pdf.</p>
-                </div>
+                        </div>
+              <div class="box-body">
+                        <?php }
+
+                        if($p['ba_rev'] != NULL ){?>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">Berita acara
+                            <a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a> 
+                          </label>
+                        </div>    
+                        <?php } else{?>
+                        <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                          <a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Upload BA</a>
+                        </label>
+                        </div>
+                        <?php }
+                ?>
+              </div>
               </div>
 
               <div class="box-footer">

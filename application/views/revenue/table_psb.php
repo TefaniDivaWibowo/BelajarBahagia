@@ -65,7 +65,7 @@
                     <td><?= $p['id_rev'];?></td>
                     <td><?= $p['mdf'];?></td>
                     <td><?= $p['nomor_pots'];?></td>
-                    <td><?= $p['nomor_speedy'];?></td>
+                    <td> <a href="<?php echo base_url()."index.php/Revenue/detail/" . $p['id_rev'] ."";?>"><?= $p['nomor_speedy'];?></a></td>
                     <td><?= $p['nama'];?></td>
                     <td><?= $p['alamat'];?></td>
                     <td><?= $p['odp'];?></td>
@@ -85,7 +85,13 @@
                     <td><?= $p['tgl_va'];?></td>
                     <td><?= $p['tgl_ps'];?></td>
                     <td><?= $p['hasil_cek_redaman'];?></td>
-                    <td><?= $p['biaya'];?></td>
+                    <?php
+                      if($p['biaya'] != NULL ){?>
+                    <td><?= $p['biaya'];?></td>                       
+                        <?php } else{?>
+                    <td><a href="<?php echo base_url()."index.php/Revenue/update_bia/" . $p['id_rev'] ."";?>">Update biaya</a></td>
+                        <?php }
+                    ?>
                     <?php
                       if($p['ba_rev'] != NULL ){?>
                         <td><a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a></td>                        

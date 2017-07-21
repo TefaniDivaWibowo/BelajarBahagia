@@ -13,7 +13,9 @@ class Revenue extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('aside');
-		$this->load->view('revenue/dashboard_rev');
+		$data['psb'] = $this->RevModel->get_prov();
+		$data['rev'] = $this->RevModel->get_psb();
+		$this->load->view('revenue/dashboard_rev', $data);
 		$this->load->view('footer');
 	}
 
@@ -25,7 +27,7 @@ class Revenue extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function index_coba($id)
+	public function detail($id)
 	{
 		$this->load->view('header');
 		$this->load->view('aside');
@@ -65,15 +67,17 @@ class Revenue extends CI_Controller {
 
 	public function upload_ba($id){
 		$this->load->view('header');
+		$this->load->view('aside');
 		$data['psb'] = $this->RevModel->get_dt($id);		
-		$this->load->view('form_upload_ba', $data);
+		$this->load->view('revenue/upload_ba', $data);
 		$this->load->view('footer');
 	}
 
 	public function update_bia($id){
 		$this->load->view('header');
+		$this->load->view('aside');
 		$data['rev'] = $this->RevModel->get_biaya($id);
-		$this->load->view('update_biaya', $data);
+		$this->load->view('revenue/update_biaya', $data);
 		$this->load->view('footer');
 	}
 
@@ -180,7 +184,7 @@ class Revenue extends CI_Controller {
 		$data['rev'] = $this->RevModel->get_psb();
 		$this->load->view('header');
 		$this->load->view('aside');
-		$this->load->view('revenue/table_psb');
+		$this->load->view('revenue/table_psb', $data);
 		$this->load->view('footer');
 	}
 

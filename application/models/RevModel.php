@@ -11,9 +11,62 @@ class RevModel extends CI_Model{
       $query = $this->db
                     ->select('*')
                     ->from('data_psb')
+                    ->where('rekon', 'ok')
+                    ->get();
+      return $query->result_array();
+    }
+
+    function get_all2($kt, $ar, $tgl1, $bln1, $thn1, $tgl2, $bln2, $thn2){
+    $dt1 = $thn1.'-'.$bln1.'-'.$tgl1;
+    $dt2 = $thn2.'-'.$bln2.'-'.$tgl2;
+      if($kt == 'semua' && $ar == 'semua'){
+          $res  = $this->db
+                      ->query("SELECT * FROM data_psb WHERE (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."') AND rekon = 'ok';");
+        }elseif ($kt == 'semua') {
+          $res = $this->db
+                      ->query("SELECT * FROM data_psb WHERE (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."') AND rekon = 'ok' AND wilayah = '". $ar ."';");
+        }elseif ($ar == 'semua') {
+          $res = $this->db
+                      ->query("SELECT * FROM data_psb WHERE (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."') AND rekon = 'ok' AND divisi = '". $kt ."';");
+        }else{
+          $res  = $this->db
+                      ->query("SELECT * FROM data_psb WHERE rekon = NULL AND (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."') AND rekon = 'ok' AND divisi = '". $kt ."' AND wilayah = '". $ar ."';");
+        }        
+      return $res->result_array();
+    }
+
+
+    function get_all3(){
+      $query = $this->db
+                    ->select('*')
+                    ->from('data_psb')
                     ->where('rekon', NULL)
                     ->get();
       return $query->result_array();
+    }
+
+    function get_all4($kt, $ar, $tgl1, $bln1, $thn1, $tgl2, $bln2, $thn2){
+    $dt1 = $thn1.'-'.$bln1.'-'.$tgl1;
+    $dt2 = $thn2.'-'.$bln2.'-'.$tgl2;
+      if($kt == 'semua' && $ar == 'semua'){
+          $res  = $this->db
+                       ->select('*')
+                       ->from('data_psb')
+                       ->where('rekon', NULL)
+                       ->where('tgl_ps <= ', $dt1)
+                       ->where('tgl_ps >= ', $dt2)
+                       ->get();
+        }elseif ($kt == 'semua') {
+          $res = $this->db
+                      ->query("SELECT * FROM data_psb WHERE (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."' AND rekon = NULL AND wilayah = '". $ar ."');");
+        }elseif ($ar == 'semua') {
+          $res = $this->db
+                      ->query("SELECT * FROM data_psb WHERE (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."' AND rekon = NULL AND divisi = '". $kt ."');");
+        }else{
+          $res  = $this->db
+                      ->query("SELECT * FROM data_psb WHERE rekon = NULL AND (tgl_ps BETWEEN '". $dt1 ."' AND '". $dt2 ."');");
+        }        
+      return $res->result_array();
     }
 
     function get_all_rek(){
@@ -30,6 +83,15 @@ class RevModel extends CI_Model{
                     ->select('*')
                     ->from('data_psb')
                     ->where('rekon', 'charge')
+                    ->get();
+      return $query->result_array();
+    }
+
+    function for_rekon(){
+      $query = $this->db
+                    ->select('*')
+                    ->from('data_psb')
+                    ->where('rekon', NULL)
                     ->get();
       return $query->result_array();
     }
@@ -65,6 +127,7 @@ class RevModel extends CI_Model{
                     ->select('*')
                     ->from('data_psb')
                     ->where('divisi', 'psb')
+                    ->or_where('divisi', 'PSB')
                     ->get();
       return $query->result_array();
     }
@@ -74,6 +137,7 @@ class RevModel extends CI_Model{
                     ->select('SUM(biaya) as total')
                     ->from('data_psb')
                     ->where('divisi', 'psb')
+                    ->or_where('divisi', 'PSB')
                     ->get();
       return $query->row()->total;
     }
@@ -201,6 +265,16 @@ class RevModel extends CI_Model{
       return $query->row()->total;
     }
 
+    function get_prov(){
+      $query = $this->db
+                    ->select('*')
+                    ->from('data_psb')
+                    ->where('divisi', 'psb')
+                    ->or_where('divisi', 'PSB')
+                    ->get();
+      return $query->num_rows();
+    }
+
   public function Add($data){
         $res = $this->db->insert('data_psb', $data);
         return $res;
@@ -223,7 +297,7 @@ class RevModel extends CI_Model{
     }
 
     function get_dt_psb(){
-      $query  = $this->db->query("SELECT tgl_ps, SUM(biaya) AS harga FROM data_psb WHERE divisi = 'psb' GROUP BY tgl_ps ORDER BY tgl_ps");
+      $query  = $this->db->query("SELECT tgl_ps, SUM(biaya) AS harga FROM data_psb WHERE divisi = 'psb' OR divisi = 'PSB' GROUP BY tgl_ps ORDER BY tgl_ps");
       return $query->result();
     }
 

@@ -1,5 +1,3 @@
-  
-  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -125,25 +123,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Infrastructure Delivery
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span></a>
-              <ul class="treeview-menu">
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Migration
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?= base_url('index.php/Revenue/data_migrasi')?>"><i class="fa fa-circle-o"></i> Data Migration</a></li>
-                    <li><a href="<?= base_url('index.php/Revenue/form_migrasi')?>"><i class="fa fa-circle-o"></i> Form Migration</a></li>
-                  </ul>
-                </li>
-                <li><a href="<?= base_url('index.php/RevTarget/target_mig')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
-              </ul>
-            </li>
             <li><a href=""><i class="fa fa-circle-o"></i> Assurance
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -155,27 +134,19 @@
                 <li><a href="<?= base_url('index.php/RevTarget/target_ass')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
               </ul>
             </li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Provisioning Indihome
+            <li><a href=""><i class="fa fa-circle-o"></i> Data
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span></a>
               <ul class="treeview-menu">
-                <li><a href="<?= base_url('index.php/Revenue/data_psb')?>"><i class="fa fa-circle-o"></i> Data Provisioning
+                <li><a href="<?= base_url('index.php/revrekon/all_rekon')?>"><i class="fa fa-circle-o"></i> All Data
                   </a></li>
-                <li><a href="<?= base_url('index.php/Revenue/form_psb')?>"><i class="fa fa-circle-o"></i> Form Provisioning</a></li>
-                <li><a href="<?= base_url('index.php/RevTarget/target_psb')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+                <li><a href="<?= base_url('index.php/revrekon/rekon')?>"><i class="fa fa-circle-o"></i> Data Sudah Rekon</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_ass')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
               </ul>
             </li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Maintenance Infra Sup
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span></a>
-              <ul class="treeview-menu">
-                <li><a href="<?= base_url('index.php/Revenue/data_mainis')?>"><i class="fa fa-circle-o"></i> Data Maintenance Infra Sup
-                  </a></li>
-                <li><a href="<?= base_url('index.php/Revenue/form_mainis')?>"><i class="fa fa-circle-o"></i> Form Maintenance Infra Sup</a></li>
-                <li><a href="<?= base_url('index.php/RevTarget/target_mainis')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
-              </ul>
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Home
+            </a>
             </li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Infrastructure Service
             <span class="pull-right-container">
@@ -207,6 +178,59 @@
                 </li>
               </ul>            
               </li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Infrastructure Delivery
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Migration
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/Revenue/data_migrasi')?>"><i class="fa fa-circle-o"></i> Data Migration</a></li>
+                    <li><a href="<?= base_url('index.php/Revenue/form_migrasi')?>"><i class="fa fa-circle-o"></i> Form Migration</a></li>
+                  </ul>
+                </li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_mig')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Maintenance Infra Sup
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('index.php/Revenue/data_mainis')?>"><i class="fa fa-circle-o"></i> Data Maintenance Infra Sup
+                  </a></li>
+                <li><a href="<?= base_url('index.php/Revenue/form_mainis')?>"><i class="fa fa-circle-o"></i> Form Maintenance Infra Sup</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_mainis')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Provisioning Indihome
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+              <ul class="treeview-menu">
+                <li><a href="<?= base_url('index.php/Revenue/data_psb')?>"><i class="fa fa-circle-o"></i> Data Provisioning
+                  </a></li>
+                <li><a href="<?= base_url('index.php/Revenue/form_psb')?>"><i class="fa fa-circle-o"></i> Form Provisioning</a></li>
+                <li><a href="<?= base_url('index.php/RevTarget/target_psb')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+              </ul>
+            </li>
+            <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Search
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> BA</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                  </ul>
+            </li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Service Delivery
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -237,25 +261,10 @@
                   </ul>
               </ul> 
             </li>
-            <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Search
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> BA</a></li>
-                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
-                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
-                  </ul>
-            </li>
           </ul>
         </li>
-<<<<<<< HEAD
         <li> <!-- class="active treeview" -->
-=======
         <li class="treeview">
->>>>>>> a5d195e1e5e1c75c06b5f85717c7b76ad11e2c97
           <a href="<?=base_url("index.php/SearchSN/");?>">
             <i class="fa fa-search"></i> <span>Search NTE</span>
           </a>

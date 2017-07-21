@@ -1,5 +1,7 @@
 <?php
+include "aside.php";
 $connection = $dbcon = pg_connect("host='localhost' user='postgres' password='inti' dbname='data_project'");
+
 /*if (!$connection) {
 print('Connection Failed');
 exit;}
@@ -13,11 +15,17 @@ else { print('Connection Success');
             echo "Gagal edit";
       }*/
 if(!empty($_POST['pilih'])){
+      $i = 0;
+?>
+  <div class="content-wrapper">
 
-$sql = "update data_psb set rekon='ok' where id_rev IN '";
+  <div class="callout callout-info">
+        <h4>Anda yakin ingin merekon data?</h4>
+     <form method="post" action="<?php echo base_url()."index.php/RevRekon/rekon_cek";?>">
 
-            // Loop to store and display values of individual checked checkbox.
-
+<?php
+echo "<input type='hidden' name='rekon' value='";
+// $sql = "update data_psb set rekon='ok' where id_rev IN '";
             $i = count($_POST['pilih']);
             $a = 1; foreach($_POST['pilih'] as $selected){
             if($i==$a){
@@ -32,6 +40,11 @@ $sql = "update data_psb set rekon='ok' where id_rev IN '";
                 array_push($data1, $c);
             } $a++;
             }
-            // echo "<script>alert('".$data1 . $b.",')</script>";
-"'";
+echo "'> </input>";
             }
+?>
+
+                <button name="oke" type="submit" class="btn bg-maroon margin">OK</button>
+</form>
+      </div>
+     </div>

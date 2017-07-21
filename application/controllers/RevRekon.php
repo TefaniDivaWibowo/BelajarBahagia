@@ -19,10 +19,36 @@ class RevRekon extends CI_Controller {
 		echo "Haii.. ini index dari RevRekon";
 	}
 	// pencarian tanpa tanggal
-	public function rekon(){
-		$this->load->view('header');
+	public function all_rekon(){
 		$data['psb'] = $this->RevModel->get_all_rek();
-		$this->load->view('rev_rekon', $data);
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('revenue/cari_all', $data);
+		$this->load->view('footer');
+	}
+
+	public function cari_all_rekon(){
+		$kt 		= $this->input->post('kategori');
+		$ar 		= $this->input->post('area');
+		$tgl1 		= $this->input->post('tanggal1');
+		$bln1		= $this->input->post('bulan1');
+		$thn1		= $this->input->post('tahun1');
+		$tgl2 		= $this->input->post('tanggal2');
+		$bln2		= $this->input->post('bulan2');
+		$thn2		= $this->input->post('tahun2');
+		$this->load->view('header');
+		$this->load->view('aside');
+		$data['psb'] = $this->RevModel->get_all2($kt, $ar, $tgl1, $bln1, $thn1, $tgl2, $bln2, $thn2);
+		$this->load->view('revenue/cari_all', $data);
+		$this->load->view('footer');
+
+	}
+
+	public function rekon(){
+		$data['psb'] = $this->RevModel->get_all_rek();
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('revenue/cari_all', $data);
 		$this->load->view('footer');
 	}
 
@@ -63,16 +89,12 @@ class RevRekon extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function rekon_cek($id)
-	{		
-        $data = array(
-            'rekon' => 'ok'
-             );
-        $where = array(
-        'id_rev' => $id
-    		);
-        $this->RevModel->Update('data_psb', $data, $where);
-        redirect(base_url('index.php/RevRekon/data_dikerjakan'),'refresh');
+	public function rekon_cek()
+	{
+		$re = $this->input->post('rekon');
+		$this->db
+             ->query("Update data_psb set rekon = 'ok' WHERE id_rev IN(".$re.")");
+        redirect(base_url('index.php/SearchRev/cari_by_date'),'refresh');
 	}
 
 	public function tagih_cek($id)

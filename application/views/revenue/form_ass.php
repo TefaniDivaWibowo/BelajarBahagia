@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Witel</label>
+                  <label class="col-sm-2 control-label">Layanan</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="layanan" required/>
                       <option value="1">OP-1P</option>
@@ -197,7 +197,7 @@
                   <label>Upload Berita Acara</label>
                   <input type="file" name="ba_psb">
 
-                  <p class="help-block">Upload berita acara dengan format jpg atau pdf.</p>
+                  <p class="help-block">Upload berita acara dengan format nama tanpa spasi dan berekstensi jpg atau pdf.</p>
                 </div>
               </div>
 

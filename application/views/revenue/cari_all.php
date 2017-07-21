@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Search Data by Division & Area
+        Search Data Recon
       </h1>
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,6 +18,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
         <!-- right column -->
         <div class="col-md-12">
           <!-- Horizontal Form -->
@@ -26,7 +27,7 @@
               <h3 class="box-title">Search Form</h3>
             </div>
             <div class="form-horizontal">
-            <form method="post" action="<?php echo base_url()."index.php/searchrev/hasil_by_divisi";?>">
+            <form method="post" action="<?php echo base_url()."index.php/revrekon/cari_all_rekon";?>">
             <?php
               $namaBulan = array(1 => "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",  "September", "Oktober",  "November", "Desember");
               $hariIni = time(); // menyimpan tanggal hari ini
@@ -38,7 +39,7 @@
                   <label class="col-sm-2 control-label">Pilih Kategori Divisi</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="kategori" required/>
-                    <option value="semua_ba" >Semua Divisi</option>
+                    <option value="semua" >Semua Divisi</option>
                     <option value="psb">Provisioning Indihome</option>
                     <option value="ggn">Assurance</option>
                     <option value="migrasi">Migration</option>
@@ -58,7 +59,7 @@
                   <label class="col-sm-2 control-label">Pilih Kategori Area</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="area" required/>
-                    <option value="semua_ba">Semua Area</option>
+                    <option value="semua">Semua Area</option>
                     <option value="malang">Malang</option>
                     <option value="madiun">Madiun</option>
                     <option value="pasuruan">Pasuruan</option>
@@ -69,12 +70,95 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Nomor Internet</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Ketikkan beberapa nomor internet" name="no_inet" required/>
+                  <label class="col-sm-2 control-label">Tanggal Awal</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" name="tanggal1" required/>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                  <?php for ($n=10; $n<=31 ; $n++) { ?>
+                    <option value="<?php echo $n; ?>" > <?php echo $n; ?> </option>
+                  <?php } ?>
+                  </select>
+                  </div>
+
+                  <div class="col-sm-3">
+                  <select class="form-control" name="bulan1" required/>
+                    <option value="01"> <?php echo $namaBulan[1]; ?> </option>
+                    <option value="02"> <?php echo $namaBulan[2]; ?> </option>
+                    <option value="03"> <?php echo $namaBulan[3]; ?> </option>
+                    <option value="04"> <?php echo $namaBulan[4]; ?> </option>
+                    <option value="05"> <?php echo $namaBulan[5]; ?> </option>
+                    <option value="06"> <?php echo $namaBulan[6]; ?> </option>
+                    <option value="07"> <?php echo $namaBulan[7]; ?> </option>
+                    <option value="08"> <?php echo $namaBulan[8]; ?> </option>
+                    <option value="09"> <?php echo $namaBulan[9]; ?> </option>
+                    <?php for ($n=10; $n<=12 ; $n++) { ?> 
+                    <option value="<?php echo $n; ?>" > <?php echo $namaBulan[$n]; ?> </option> 
+                  <?php } ?> 
+                  </select>
+                  </div>
+
+                  <div class="col-sm-3">
+                  <select class="form-control" name="tahun1" required/>
+                  <?php for ($n=$tahun-4; $n<=$tahun+5 ; $n++) { ?>
+                  <option value="<?php echo $n; ?>" > <?php echo $n; ?> </option>
+                  <?php } ?>
+                  </select>
                   </div>
                 </div>
-              
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Tanggal Akhir</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" name="tanggal2" required/>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                  <?php for ($n=10; $n<=31 ; $n++) { ?>
+                    <option value="<?php echo $n; ?>" > <?php echo $n; ?> </option>
+                  <?php } ?>
+                  </select>
+                  </div>
+
+                  <div class="col-sm-3">
+                  <select class="form-control" name="bulan2" required/>
+                    <option value="01"> <?php echo $namaBulan[1]; ?> </option>
+                    <option value="02"> <?php echo $namaBulan[2]; ?> </option>
+                    <option value="03"> <?php echo $namaBulan[3]; ?> </option>
+                    <option value="04"> <?php echo $namaBulan[4]; ?> </option>
+                    <option value="05"> <?php echo $namaBulan[5]; ?> </option>
+                    <option value="06"> <?php echo $namaBulan[6]; ?> </option>
+                    <option value="07"> <?php echo $namaBulan[7]; ?> </option>
+                    <option value="08"> <?php echo $namaBulan[8]; ?> </option>
+                    <option value="09"> <?php echo $namaBulan[9]; ?> </option>
+                    <?php for ($n=10; $n<=12 ; $n++) { ?> 
+                    <option value="<?php echo $n; ?>" > <?php echo $namaBulan[$n]; ?> </option> 
+                  <?php } ?> 
+                  </select>
+                  </div>
+
+                  <div class="col-sm-3">
+                  <select class="form-control" name="tahun2" required/>
+                  <?php for ($n=$tahun-4; $n<=$tahun+5 ; $n++) { ?>
+                  <option value="<?php echo $n; ?>" > <?php echo $n; ?> </option>
+                  <?php } ?>
+                  </select>
+                  </div>
+                </div>
+
               <div class="box-footer" align="center">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
@@ -152,14 +236,7 @@
                     <td><?= $p['tgl_ps'];?></td>
                     <td><?= $p['hasil_cek_redaman'];?></td>
                     <td><?= $p['biaya'];?></td>
-                    <?php
-                      if($p['ba_rev'] != NULL ){?>
-                        <td><a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a></td>                        
-                        <?php } else{?>
-
-                    <td><a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Upload BA</a></td>
-                        <?php }
-                    ?>
+                    <td><a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a></td>                    
                   </tr>
                   <?php
                   }
