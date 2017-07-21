@@ -12,7 +12,7 @@ class HrPerformance extends CI_Controller {
 
 	public function index()
 	{
-		$data['data_hr'] 	= $this->hr->get_all_data(); //All data use Data HR Sec 
+		$data['data_hr'] 	= $this->hr->get_all_data('data_hr_sec'); //All data use Data HR Sec 
 		$this->load->view('header');
 		$this->load->view('aside');
 		$this->load->view('hr/data_hr', $data);
@@ -141,7 +141,7 @@ class HrPerformance extends CI_Controller {
 	}
 
 	//PIK START
-	 public function ajax_list()
+	public function ajax_list()
     {
         $list = $this->hr->get_datatables();
         $data = array();
@@ -170,5 +170,5 @@ class HrPerformance extends CI_Controller {
         //output to json format
         echo json_encode($output);
     }
- //PIK END
+    //PIK END
 }

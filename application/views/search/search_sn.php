@@ -21,12 +21,12 @@
             <!-- /.box-header -->
             <!-- form start -->
 
-              <div class="box-body">
+              <!--<div class="box-body">
                 <div class="form-group">
                 
                   <label for="inputEmail3" class="col-sm-3 control-label" style="padding-top: 7px;">Masukkan Nomor NTE</label>
 
-                <form method="POST" action="<?=base_url('index.php/SearchSN/search_sn')?>" >
+                <form method="POST" action="//base_url('index.php/SearchSN/search_sn')" >
                   <div class="col-sm-7">
                     <input type="text" name="sn" placeholder="No NTE" class="form-control">
                   </div>
@@ -35,7 +35,7 @@
                   </div>
                 </form>
                 </div>
-              </div>
+              </div>-->
               <!-- /.box-body -->
               <!-- /.box-footer -->
           </div>

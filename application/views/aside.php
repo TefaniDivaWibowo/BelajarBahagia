@@ -51,7 +51,7 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="<?=base_url('index.php/AssurancePerformance/report_month_open')?>"><i class="fa fa-circle-o"></i> Month</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_open')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
                   </ul>
                 </li>
               </ul>
@@ -73,7 +73,7 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-circle-o"></i> Month</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_close')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
                   </ul>
                 </li>
               </ul>
@@ -83,7 +83,14 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-list"></i> <span>COGS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/COGS/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard COGS</a></li>
+            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
+          </ul>
         </li>
         <li class="treeview">
           <a href="">
@@ -264,6 +271,8 @@
           </ul>
         </li>
         <li> <!-- class="active treeview" -->
+        <li class="treeview">
+
         <li class="treeview">
           <a href="<?=base_url("index.php/SearchSN/");?>">
             <i class="fa fa-search"></i> <span>Search NTE</span>

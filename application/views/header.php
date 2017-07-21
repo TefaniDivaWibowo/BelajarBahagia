@@ -7,6 +7,9 @@
   <title>Admin TA MALANG</title>
   <!-- Icon -->
   <link rel="icon" href="<?=base_url();?>assets/dist/img/logo.ico" type="image/ico">
+  <title>Support TA MALANG</title>
+  <!-- Icon -->
+  <link rel="icon" href="<?=base_url();?>assets/dist/img/logo.ico" type="image/ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -34,8 +37,15 @@
   <link rel="stylesheet" href="<?=base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Data tables -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="<?=base_url();?>assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- Select 2 -->
+  <link rel="stylesheet" href="<?=base_url();?>assets/plugins/select2/select2.min.css">
+
+  <!-- Chart Open -->
+  <style>
+    #chartdiv {
+      height: 400px;
+    }              
+  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
