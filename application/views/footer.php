@@ -225,11 +225,106 @@
 <script src="<?=base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Select2 -->
 <script src="<?=base_url();?>assets/plugins/select2/select2.full.min.js"></script>
+<!-- Pie Chart -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
 <!-- page script -->
 <script type="text/javascript">
- 
-var table;
- 
+  var chart;
+  var legend;
+  var selected;
+
+  var types = [{
+    type: "Fossil Energy",
+    percent: 70,
+    color: "#ff9e01",
+    subs: [{
+      type: "Oil",
+      percent: 15
+    }, {
+      type: "Coal",
+      percent: 35
+    }, {
+      type: "Nuclear",
+      percent: 20
+    }]
+  }, {
+    type: "Green Energy",
+    percent: 30,
+    color: "#b0de09",
+    subs: [{
+      type: "Hydro",
+      percent: 15
+    }, {
+      type: "Wind",
+      percent: 10
+    }, {
+      type: "Other",
+      percent: 5
+    }]
+  }];
+
+  function generateChartData() {
+    var chartData = [];
+    for (var i = 0; i < types.length; i++) {
+      if (i == selected) {
+        for (var x = 0; x < types[i].subs.length; x++) {
+          chartData.push({
+            type: types[i].subs[x].type,
+            percent: types[i].subs[x].percent,
+            color: types[i].color,
+            pulled: true
+          });
+        }
+      } else {
+        chartData.push({
+          type: types[i].type,
+          percent: types[i].percent,
+          color: types[i].color,
+          id: i
+        });
+      }
+    }
+    return chartData;
+  }
+
+  AmCharts.makeChart("chartdiv", {
+    "type": "pie",
+    "theme": "light",
+
+    "dataProvider": generateChartData(),
+    "labelText": "[[title]]: [[value]]",
+    "labelRadius": -52.5,
+    "balloonText": "[[title]]: [[value]]",
+    "titleField": "type",
+    "valueField": "percent",
+    "outlineColor": "#FFFFFF",
+    "outlineAlpha": 0.8,
+    "outlineThickness": 2,
+    "colorField": "color",
+    "pulledField": "pulled",
+    "listeners": [{
+      "event": "clickSlice",
+      "method": function(event) {
+        var chart = event.chart;
+        if (event.dataItem.dataContext.id != undefined) {
+          selected = event.dataItem.dataContext.id;
+        } else {
+          selected = undefined;
+        }
+        chart.dataProvider = generateChartData();
+        chart.validateData();
+      }
+    }], 
+  });
+</script>
+<script type="text/javascript">
+
+/*var table; 
 $(document).ready(function() {
  
     //datatables
@@ -241,7 +336,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('HrPerformance/ajax_list')?>",
+            "url": "",
             "type": "POST"
         },
  
@@ -255,7 +350,7 @@ $(document).ready(function() {
  
     });
  
-});
+});*/
 </script>
 
 <script type="text/javascript">
@@ -271,19 +366,31 @@ $(document).ready(function() {
                     }
     });
   });
-</script>
 
-<script type="text/javascript">
-<<<<<<< HEAD
-$(document).ready(function() {
-    $('#example').DataTable( {
-=======
   $(document).ready(function() {
     $('#data_sn').DataTable( {
->>>>>>> a5d195e1e5e1c75c06b5f85717c7b76ad11e2c97
         "pagingType": "full_numbers"
     } );
-} );
+  } );
+
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+  } );
+
+  //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    $('#datepickerrange').datepicker({
+      autoclose: true
+    });
+
+  //Initialize Select2 Elements
+    $(".select2").select2();  
+
 </script>
 </body>
 </html>

@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<<<<<<< HEAD
-  <title>Project Web TA</title>
-=======
-  <title>Admin TA MALANG</title>
+
+  <title>Support TA MALANG</title>
   <!-- Icon -->
   <link rel="icon" href="<?=base_url();?>assets/dist/img/logo.ico" type="image/ico">
->>>>>>> a5d195e1e5e1c75c06b5f85717c7b76ad11e2c97
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -37,8 +35,15 @@
   <link rel="stylesheet" href="<?=base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Data tables -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="<?=base_url();?>assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- Select 2 -->
+  <link rel="stylesheet" href="<?=base_url();?>assets/plugins/select2/select2.min.css">
+
+  <!-- Chart Open -->
+  <style>
+    #chartdiv {
+      height: 400px;
+    }              
+  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,11 +57,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="<?=base_url();?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>TA</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><img src="<?=base_url();?>assets/dist/img/New-Logo-TA-2016.png" height="35" width="190"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

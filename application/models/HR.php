@@ -5,6 +5,7 @@
     }
 
     //THIS IS START OF PIK
+
     var $table = 'data_hr_sec';
     var $column_order = array(null, 'nik', 'nama', 'position_name', 'direktorat', 'unit', 'sub_unit', 'psa'); //isilah yang ingin diurutkan
     var $column_search = array('nik', 'nama', 'position_name', 'direktorat', 'unit', 'sub_unit', 'psa'); //isilah apa saja yang ingin di search tapi nanti aja
@@ -74,8 +75,8 @@
 
     //DIS IS END OF PIK
 
-    function get_all_data(){
-      $this->db->from('data_hr_sec');   //untuk all data menggunakan Data HR Sec
+    function get_all_data($table){
+      $this->db->from($table);   //untuk all data menggunakan Data HR Sec
       $query  = $this->db->get();
       return $query->result_array();
     }

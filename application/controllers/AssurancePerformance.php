@@ -33,6 +33,14 @@ class AssurancePerformance extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function report_ytd_open()
+	{
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('assurance_performance/report_ytd_open');
+		$this->load->view('footer');
+	}
+
 	public function data_close(){
     	$data['data_close'] 	= $this->AssPer->get_all_data('data_close');
     	$this->load->view('header');
@@ -46,6 +54,22 @@ class AssurancePerformance extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('aside');
 		$this->load->view('assurance_performance/import_data_close');
+		$this->load->view('footer');
+	}
+
+	public function report_month_close()
+	{
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('assurance_performance/report_month_open');
+		$this->load->view('footer');
+	}
+
+	public function report_ytd_close()
+	{
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('assurance_performance/report_ytd_close');
 		$this->load->view('footer');
 	}
 

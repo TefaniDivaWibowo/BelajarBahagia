@@ -25,13 +25,11 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Witel</label>
                   <div class="col-sm-10">
-                    <select class="form-control" name="wilayah" required/>
-                    <option value="madiun">Madiun</option>
-                    <option value="pasuruan">Pasuruan</option>
-                    <option value="malang">Malang</option>
-                    <option value="jember">Jember</option>
-                    <option value="kediri">Kediri</option>
-                  </select>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Alabama</option>
+                      <option>FTTH</option>
+                      <option>Cooper</option>
+                    </select>
                   </div>
                 </div>
 

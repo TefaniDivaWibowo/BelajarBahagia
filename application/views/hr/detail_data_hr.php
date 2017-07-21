@@ -34,6 +34,9 @@
             </div>
             <!-- /.box-body -->
           </div>
+
+            <a href="<?=base_url('index.php/HrPerformance/view_edit/'.$a['nik'])?>" class="btn btn-primary btn-block" ><b>Edit Data Profile</b></a>
+
           <!-- /.box -->
         </div>
         <!-- /.col -->
