@@ -55,21 +55,25 @@
         <div class="col-md-3">
 
           <!-- Profile Image -->
+          <form method="post" action="<?php echo base_url()."index.php/HrPerformance/upload_img/".$a['nik']."";?>" enctype="multipart/form-data">
           <div class="box box-primary">
             <div class="box-body box-profile">
             <?php
               if ($a['foto'] != NULL) {
-                echo "<img class='profile-user-img img-responsive img-circle' src='".base_url($a['foto'])."' alt='User profile picture' height='200' width='200'>";
+                echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('profil/'.$a['foto'])."' alt='User profile picture' height='200' width='200'>";
               } else {
                 echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('assets/dist/img/foto/default.png')."' alt='User profile picture' height='200' width='200'>";
               }
             ?>
             <hr>
               <div class="file-upload">
-                <form method="post" enctype="multipart/form-data" action="<?= base_url('perusahaan/up_gamlat');?>">
-                  <label for="upload" class="btn btn-primary btn-block">Edit Photo</label>
+                  <label for="upload" class="btn btn-success btn-block">Choose Photo</label>
                   <input id="upload" class="btn file-upload__input btn-block" type="file" name="filePhoto" style="text-align: center;">
                   <input type="hidden" value="<?=$a['nik'];?>" name="id_user"/>
+              </div>
+            </div>
+          </div>
+                  <input type="submit" class="btn btn-primary btn-block" value="Save Photo">
                 </form>
                 <!-- <form method="post" enctype="multipart/form-data" action="">
                   <input type="file" class="btn btn-primary" name="fileLatar" id="fileLatar" />
@@ -77,10 +81,7 @@
                   <br>
                   <input type="submit" name="gambar" class="btn btn-primary" value="Jadikan Gambar Sampul"/>
                 </form> -->
-              </div>
-            </div>
             <!-- /.box-body -->
-          </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->

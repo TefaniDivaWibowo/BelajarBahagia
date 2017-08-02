@@ -113,12 +113,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="<?= base_url('index.php/Revenue/data_prov')?>"><i class="fa fa-circle-o"></i> Data Provisioning</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Import Data PSB</a></li>
+            <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Search
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search BA</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                  </ul>
+            </li>
           </ul>
         </li>
         <li class="treeview">
@@ -146,9 +154,9 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span></a>
               <ul class="treeview-menu">
-                <li><a href="<?= base_url('index.php/revrekon/all_rekon')?>"><i class="fa fa-circle-o"></i> All Data
+                <li><a href="<?= base_url('index.php/revenue/all_rekon')?>"><i class="fa fa-circle-o"></i> All Data
                   </a></li>
-                <li><a href="<?= base_url('index.php/revrekon/rekon')?>"><i class="fa fa-circle-o"></i> Data Sudah Rekon</a></li>
+                <li><a href="<?= base_url('index.php/revenue/rekon')?>"><i class="fa fa-circle-o"></i> Data Sudah Rekon</a></li>
                 <li><a href="<?= base_url('index.php/RevTarget/target_ass')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
               </ul>
             </li>
@@ -233,9 +241,9 @@
                     </span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> BA</a></li>
                     <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
                     <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search BA</a></li>
                   </ul>
             </li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Service Delivery

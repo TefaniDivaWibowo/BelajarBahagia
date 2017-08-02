@@ -11,20 +11,29 @@ class COGS extends CI_Controller {
 
     function dashboard(){
     	$this->load->view('header');
-		$this->load->view('aside');
-		$this->load->view('cogs/dashboard_cogs');
-		$this->load->view('footer');
+  		$this->load->view('aside');
+  		$this->load->view('cogs/dashboard_cogs');
+  		$this->load->view('footer');
     }
 
     function import(){
     	$this->load->view('header');
-		$this->load->view('aside');
-		$this->load->view('cogs/import_cogs');
-		$this->load->view('footer');
+  		$this->load->view('aside');
+  		$this->load->view('cogs/import_cogs');
+  		$this->load->view('footer');
     }
 
     function coba(){
       $data['cogs'] = $this->Cogs_Model->get_all();
-      $this->load->view('cogs/graph', $data);
+      $data['bln'] = $this->Cogs_Model->get_cogs();
+      $data['rev'] = $this->Cogs_Model->get_rev();
+      $this->load->view('cogs/graph5', $data);
+    }
+
+    function coba2(){
+      $data['cogs'] = $this->Cogs_Model->get_all();
+      $data['bln'] = $this->Cogs_Model->get_cogs();
+      $data['rev'] = $this->Cogs_Model->get_rev();
+      $this->load->view('cogs/graph3', $data);
     }
 }

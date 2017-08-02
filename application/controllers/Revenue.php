@@ -8,14 +8,14 @@ class Revenue extends CI_Controller {
       $this->load->helper('url');
       $this->load->model('RevModel');
     }
-
+// Project Revenue
     public function index()
 	{
 		$this->load->view('header');
 		$this->load->view('aside');
 		$data['psb'] = $this->RevModel->get_prov();
 		$data['rev'] = $this->RevModel->get_psb();
-		$this->load->view('revenue/dashboard_rev', $data);
+		$this->load->view('revenue/dashboard_rev2', $data);
 		$this->load->view('footer');
 	}
 
@@ -64,7 +64,7 @@ class Revenue extends CI_Controller {
 		$this->load->view('home_rev', $data);
 		$this->load->view('footer', $data);
 	}
-
+// Ubah data
 	public function upload_ba($id){
 		$this->load->view('header');
 		$this->load->view('aside');
@@ -168,7 +168,7 @@ class Revenue extends CI_Controller {
 
         redirect(base_url('index.php/Revenue'),'refresh');
 	}
-
+// Menampilkan data dan form
 	public function form_psb(){
 		$this->load->view('header');
 		$this->load->view('aside');
@@ -311,7 +311,7 @@ class Revenue extends CI_Controller {
 		$this->load->view('revenue/table_sd', $data);
 		$this->load->view('footer');
 	}
-
+// Untuk menambahkan data
 	public function insert_psb(){
 		$p_kab = $this->input->post('panjang_kabel');
 		$p_pc  = $this->input->post('patch_cord');
@@ -420,33 +420,6 @@ class Revenue extends CI_Controller {
             'divisi' 		=> 'psb'
              );
         $this->RevModel->Add($data);
-        redirect(base_url('index.php/Revenue/data_psb'),'refresh');
-	}
-
-	public function update_psb($id){
-				$inti = $_FILES['ba_psb']['name'];
-				
-        		$config['upload_path']          = './uploads/';
-                $config['allowed_types']        = 'pdf|jpg|png|doc|docx';
-
-                $this->load->library('upload', $config);
- 
-                if (!$this->upload->do_upload('ba_psb')) {
-                        $error = array('error' => $this->upload->display_errors());
-        				echo "<script>alert('Berita acara gagal di-upload')</script>";
-                }
-                else {
-                        $data = array('upload_data' => $this->upload->data());
-        				echo "<script>alert('Berita acara berhasil ditambahkan')</script>";
-                }
-
-        $data = array(
-            'ba_rev' 		=> $inti
-             );
-        $where = array(
-        'id_rev' => $id
-    		);
-        $this->RevModel->Update('data_psb', $data, $where);
         redirect(base_url('index.php/Revenue/data_psb'),'refresh');
 	}
 
@@ -1440,5 +1413,116 @@ class Revenue extends CI_Controller {
         $this->RevModel->Add($data);
         redirect(base_url('index.php/Revenue/pt2'),'refresh');
     }
+//Untuk bagian rekon data
+    public function all_rekon(){
+		$data['psb'] = $this->RevModel->get_all_rek();
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('revenue/cari_all', $data);
+		$this->load->view('footer');
+	}
 
+	public function cari_all_rekon(){
+		$kt 		= $this->input->post('kategori');
+		$ar 		= $this->input->post('area');
+		$tgl1 		= $this->input->post('tanggal1');
+		$bln1		= $this->input->post('bulan1');
+		$thn1		= $this->input->post('tahun1');
+		$tgl2 		= $this->input->post('tanggal2');
+		$bln2		= $this->input->post('bulan2');
+		$thn2		= $this->input->post('tahun2');
+		$this->load->view('header');
+		$this->load->view('aside');
+		$data['psb'] = $this->RevModel->get_all2($kt, $ar, $tgl1, $bln1, $thn1, $tgl2, $bln2, $thn2);
+		$this->load->view('revenue/cari_all', $data);
+		$this->load->view('footer');
+
+	}
+
+	public function rekon(){
+		$data['psb'] = $this->RevModel->get_all_rek();
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('revenue/cari_all', $data);
+		$this->load->view('footer');
+	}
+
+	public function tertagih(){
+		$this->load->view('header');
+		$data['psb'] = $this->RevModel->get_all_tagih();
+		$this->load->view('rev_tagih', $data);
+		$this->load->view('footer');
+	}
+
+	public function belum_rekon(){
+		$this->load->view('header');
+		$data['psb'] = $this->RevModel->get_all();
+		$this->load->view('rev_belum', $data);
+		$this->load->view('footer');
+	}	
+
+	public function cari_data()
+	{
+		$this->load->view('header');
+		$this->load->view('rev_base_date');
+		$this->load->view('footer');
+	}
+
+	public function cari_hasil()
+	{
+		$kt 		= $this->input->post('kategori');
+		$ka 		= $this->input->post('area');
+		$tgl1 		= $this->input->post('tanggal1');
+		$bln1		= $this->input->post('bulan1');
+		$thn1		= $this->input->post('tahun1');
+		$tgl2 		= $this->input->post('tanggal2');
+		$bln2		= $this->input->post('bulan2');
+		$thn2		= $this->input->post('tahun2');
+		$this->load->view('header');
+		$data['cari'] 	= $this->RevModel->get_search($kt, $ka, $tgl1, $bln1, $thn1, $tgl2, $bln2, $thn2);
+		$this->load->view('rev_base_date', $data);
+		$this->load->view('footer');
+	}
+
+	public function rekon_cek()
+	{
+		$re = $this->input->post('rekon');
+		$this->db
+             ->query("Update data_psb set rekon = 'ok' WHERE id_rev IN(".$re.")");
+        redirect(base_url('index.php/SearchRev/cari_by_date'),'refresh');
+	}
+
+	public function tagih_cek($id)
+	{		
+        $data = array(
+            'rekon' => 'charge'
+             );
+        $where = array(
+        'id_rev' => $id
+    		);
+        $this->RevModel->Update('data_psb', $data, $where);
+        redirect(base_url('index.php/RevRekon/data_dikerjakan'),'refresh');
+	}
+
+	public function rekon_cek1()
+	{
+        $this->load->view('selisih');
+	}
+// Untuk Provisioning Performance
+	public function data_prov(){
+		$data['psb'] = $this->RevModel->get_all_psb();
+		$this->load->view('header');
+		$this->load->view('aside');
+		$this->load->view('revenue/table_prov', $data);
+		$this->load->view('footer');
+	}
+
+	public function detail_prov($id)
+	{
+		$this->load->view('header');
+		$this->load->view('aside');
+		$data['psb'] = $this->RevModel->get_detail($id);	
+		$this->load->view('revenue/detail_prov', $data);
+		$this->load->view('footer');
+	}
 }

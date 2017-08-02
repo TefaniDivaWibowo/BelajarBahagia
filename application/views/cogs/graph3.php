@@ -14,8 +14,33 @@
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
 <!-- Chart code -->
+
+<?php
+$no = 0;
+  foreach($bln as $b){
+    $data1 = array();
+    array_push($data1, $b['total']);
+    $arrResult = Array();
+    //yang digunakan
+    $array[] = $b['total'];
+?>
+  <script type="text/javascript">
+    /*var acc = new Array ();
+    var n = "<?php echo $no; ?>";
+    var acc ="<?php echo $arrResult[$no]; ?>";
+    document.write("" + acc);
+    document.write("<br>" + n)*/
+  </script>
+<?php 
+  $no++; 
+  };
+
+  // echo $array[0];
+?>
+
+
+
 <script>
-var jan="<?php echo $jan; ?>";
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "serial",
   "addClassNames": true,
@@ -34,7 +59,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
   "dataProvider": [ {
     "year": "Januari",
-    "income": jan,
+    "income": 6.7,
     "income2": 5.2,
     "expenses": 4.3,
     "wow": 4.1

@@ -14,8 +14,29 @@
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
 <!-- Chart code -->
+
+<?php
+	  foreach($bln as $b){
+	    $array[] = $b['total'];
+	  };
+
+	  foreach($rev as $r){
+	    $rvn[] = $r['total'];
+	  };
+?>
 <script>
-var jan="<?php echo $jan; ?>";
+var bln1 ="<?php echo $array[0]; ?>"
+
+var rvn1 ="<?php echo $rvn[0]; ?>"*-1;
+var rvn2 ="<?php echo $rvn[1]; ?>"*-1;
+var rvn3 ="<?php echo $rvn[2]; ?>"*-1;
+var rvn4 ="<?php echo $rvn[3]; ?>"*-1;
+
+
+if (bln7 != true) {
+  bln7 = 0;
+};
+document.write(rvn1);
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "serial",
   "addClassNames": true,
@@ -34,41 +55,41 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
   "dataProvider": [ {
     "year": "Januari",
-    "income": jan,
+    "income": rvn1,
     "income2": 5.2,
     "expenses": 4.3,
-    "wow": 4.1
+    "wow": bln1
   }, {
     "year": "Februari",
-    "income": 6.7,
+    "income": rvn2,
     "income2": 4.2,
     "expenses": 5.6,
-    "wow": 4.3
+    "wow": bln2
   }, {
     "year": "Maret",
-    "income": 6.9,
+    "income": rvn3,
     "income2": 5.2,
     "expenses": 5.0,
-    "wow": 6.2
+    "wow": bln3
   }, {
     "year": "April",
-    "income": 4.5,
+    "income": rvn4,
     "income2": 5.2,
     "expenses": 3.1,
-    "wow": 4.2
+    "wow": bln4
   }, {
     "year": "Mei",
     "income": 5.8,
     "income2": 3.2,
     "expenses": 4.2,
     // "dashLengthLine": 5,
-    "wow": 6.1
+    "wow": bln5
   }, {
     "year": "Juni",
     "income": 7.1,
     "income2": 6.2,
     "expenses": 4.1,
-    "wow": 5.3
+    "wow": bln6
   }, {
     "year": "Agustus"
     // "income": 29.5,

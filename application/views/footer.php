@@ -225,136 +225,7 @@
 <script src="<?=base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Select2 -->
 <script src="<?=base_url();?>assets/plugins/select2/select2.full.min.js"></script>
-<!-- Pie Chart -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-
 <!-- page script -->
-<<<<<<< HEAD
-=======
-<script type="text/javascript">
-  var chart;
-  var legend;
-  var selected;
-
-  var types = [{
-    type: "Fossil Energy",
-    percent: 70,
-    color: "#ff9e01",
-    subs: [{
-      type: "Oil",
-      percent: 15
-    }, {
-      type: "Coal",
-      percent: 35
-    }, {
-      type: "Nuclear",
-      percent: 20
-    }]
-  }, {
-    type: "Green Energy",
-    percent: 30,
-    color: "#b0de09",
-    subs: [{
-      type: "Hydro",
-      percent: 15
-    }, {
-      type: "Wind",
-      percent: 10
-    }, {
-      type: "Other",
-      percent: 5
-    }]
-  }];
-
-  function generateChartData() {
-    var chartData = [];
-    for (var i = 0; i < types.length; i++) {
-      if (i == selected) {
-        for (var x = 0; x < types[i].subs.length; x++) {
-          chartData.push({
-            type: types[i].subs[x].type,
-            percent: types[i].subs[x].percent,
-            color: types[i].color,
-            pulled: true
-          });
-        }
-      } else {
-        chartData.push({
-          type: types[i].type,
-          percent: types[i].percent,
-          color: types[i].color,
-          id: i
-        });
-      }
-    }
-    return chartData;
-  }
-
-  AmCharts.makeChart("chartdiv", {
-    "type": "pie",
-    "theme": "light",
-
-    "dataProvider": generateChartData(),
-    "labelText": "[[title]]: [[value]]",
-    "labelRadius": -52.5,
-    "balloonText": "[[title]]: [[value]]",
-    "titleField": "type",
-    "valueField": "percent",
-    "outlineColor": "#FFFFFF",
-    "outlineAlpha": 0.8,
-    "outlineThickness": 2,
-    "colorField": "color",
-    "pulledField": "pulled",
-    "listeners": [{
-      "event": "clickSlice",
-      "method": function(event) {
-        var chart = event.chart;
-        if (event.dataItem.dataContext.id != undefined) {
-          selected = event.dataItem.dataContext.id;
-        } else {
-          selected = undefined;
-        }
-        chart.dataProvider = generateChartData();
-        chart.validateData();
-      }
-    }], 
-  });
-</script>
-<script type="text/javascript">
-
-/*var table; 
-$(document).ready(function() {
- 
-    //datatables
-    table = $('#example').DataTable({ 
- 
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
- 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "",
-            "type": "POST"
-        },
- 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [ 0 ], //first column / numbering column
-            "orderable": false, //set not orderable
-        },
-        ],
- 
-    });
- 
-});*/
-</script>
->>>>>>> a8667e53e54b78a171b648808c71a1beb3ddb3d3
 
 <script type="text/javascript">
   $( "#nosn" ).keyup(function() {
@@ -369,49 +240,14 @@ $(document).ready(function() {
                     }
     });
   });
+</script>
 
-<<<<<<< HEAD
 <script type="text/javascript">
 $(document).ready(function() {
     $('#example').DataTable( {
         "pagingType": "full_numbers"
     } );
 } );
-
-    //Date picker
-=======
-  $(document).ready(function() {
-    $('#data_sn').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-  } );
-
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-  } );
-
-  //Date picker
->>>>>>> a8667e53e54b78a171b648808c71a1beb3ddb3d3
-    $('#datepicker').datepicker({
-      autoclose: true
-    });
-
-<<<<<<< HEAD
-    //Date picker
-    $('#datepicker2').datepicker({
-      autoclose: true
-    });
-=======
-    $('#datepickerrange').datepicker({
-      autoclose: true
-    });
-
-  //Initialize Select2 Elements
-    $(".select2").select2();  
-
->>>>>>> a8667e53e54b78a171b648808c71a1beb3ddb3d3
 </script>
 </body>
 </html>

@@ -218,7 +218,7 @@
                         <?php } else{?>
                         <div class="form-group">
                         <label class="col-sm-2 control-label">
-                          <a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Upload BA</a>
+                          <a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Edit Data</a>
                         </label>
                         </div>
                         <?php }

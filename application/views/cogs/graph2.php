@@ -1,21 +1,52 @@
-<!-- Styles -->
 <style>
-#chartdiv {
-  width: 100%;
-  height: 500px;
-} 
+#chartdiv {width: 100%; height: 500px;} 
 </style>
 
-<!-- Resources -->
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
-<!-- Chart code -->
+<?php
+$no = 0;
+  foreach($bln as $b){
+    /*$data1 = array();
+    array_push($data1, $b['total']);
+    $arrResult = Array();
+
+    $cnt=0;
+    $arrResult[$cnt] = $data1[0];
+    $cnt++
+    echo "<br>" . $b['total'];*/
+    $array[] = $b['total'];
+?>
+  <script type="text/javascript">
+    /*var acc = new Array ();
+    var n = "<?php echo $no; ?>";
+    var acc ="<?php echo $arrResult[$no]; ?>";
+    document.write("" + acc);
+    document.write("<br>" + n)*/
+  </script>
+<?php 
+    $no++; 
+  };
+  // echo $array[0];
+?>
+
 <script>
-var jan="<?php echo $jan; ?>";
+var bln1 ="<?php echo $array[0]; ?>";
+var bln2 ="<?php echo $array[1]; ?>";
+var bln3 ="<?php echo $array[2]; ?>";
+var bln4 ="<?php echo $array[3]; ?>";
+var bln5 ="<?php echo $array[4]; ?>";
+var bln6 ="<?php echo $array[5]; ?>";
+var bln7 ="<?php echo $array[6]; ?>";
+if (bln7 != true || bln8 != true) {
+  bln7 = 0;
+};
+document.write(bln7);
+document.write(bln8);
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "serial",
   "addClassNames": true,
@@ -34,41 +65,47 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
   "dataProvider": [ {
     "year": "Januari",
-    "income": jan,
+    "income": 6.7,
     "income2": 5.2,
     "expenses": 4.3,
-    "wow": 4.1
+    "wow": bln1
   }, {
     "year": "Februari",
     "income": 6.7,
     "income2": 4.2,
     "expenses": 5.6,
-    "wow": 4.3
+    "wow": bln2
   }, {
     "year": "Maret",
     "income": 6.9,
     "income2": 5.2,
     "expenses": 5.0,
-    "wow": 6.2
+    "wow": bln3
   }, {
     "year": "April",
     "income": 4.5,
     "income2": 5.2,
     "expenses": 3.1,
-    "wow": 4.2
+    "wow": bln4
   }, {
     "year": "Mei",
     "income": 5.8,
     "income2": 3.2,
     "expenses": 4.2,
     // "dashLengthLine": 5,
-    "wow": 6.1
+    "wow": bln5
   }, {
     "year": "Juni",
     "income": 7.1,
     "income2": 6.2,
     "expenses": 4.1,
-    "wow": 5.3
+    "wow": bln6
+  }, {
+    "year": "Juli",
+    "income": 7.1,
+    "income2": 6.2,
+    "expenses": 4.1,
+    "wow": 9.6
   }, {
     "year": "Agustus"
     // "income": 29.5,
