@@ -1,13 +1,12 @@
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; 2017 <a href="http://telkomakses.com">Telkom Akses</a>.</strong> All rights
     reserved.
-  </footer>
+</footer>
 
-  <!-- Control Sidebar -->
+<!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -235,8 +234,213 @@
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 
 <!-- page script -->
-<script type="text/javascript">
+              <?php
+                  foreach ($target as $b) {
+                    $number   = $b['target'];
+                    $onesix   = 1000000;
+                    $semfin   = $number * $onesix;
+                    $final    = number_format($semfin,2,",",".");
+                    $arraytar[]   = $semfin;
+                  }
 
+                  $net  = [];
+                  foreach($fz2_ytd_rev as $key=>$value){
+                    $totalrev   = $value->rev;
+                    $negone     = -1;
+                    $finalrev   = $totalrev * $negone;
+                    if($value->area == $fz2_ytd_cogs[$key]->area){
+                      array_push($net,($finalrev-$fz2_ytd_cogs[$key]->cogs));
+                    }
+                    $cogs       = $fz2_ytd_cogs[$key]->cogs;
+                    $arraycog[] = $cogs;
+                    $arrayrev[] = $finalrev;
+                    $arraynet[] = $net[$key];
+                  }
+
+            ?>
+<!--Dashboard COGS-->
+<script>
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "serial",
+  "addClassNames": true,
+  "theme": "light",
+  "autoMargins": false,
+  "marginLeft": 110,
+  "marginRight": 8,
+  "marginTop": 10,
+  "marginBottom": 26,
+  "balloon": {
+    "adjustBorderColor": false,
+    "horizontalPadding": 10,
+    "verticalPadding": 8,
+    "color": "#ffffff"
+  },
+  "legend": {
+    "horizontalGap": 10,
+    "useGraphSettings": true,
+    "markerSize": 10
+  },
+  "dataProvider": [ {
+    "area": "Jember",
+    "cogs": <?=$arraycog[0];?>,
+    "revenue": <?=$arrayrev[0];?>,
+    "income": <?=$arraynet[0];?>,
+    "target": <?=$arraytar[0];?>
+  }, {
+    "area": "Kediri",
+    "cogs": <?=$arraycog[1];?>,
+    "revenue": <?=$arrayrev[1];?>,
+    "income": <?=$arraynet[1];?>,
+    "target": <?=$arraytar[1];?>
+  }, {
+    "area": "Madiun",
+    "cogs": <?=$arraycog[2];?>,
+    "revenue": <?=$arrayrev[2];?>,
+    "income": <?=$arraynet[2];?>,
+    "target": <?=$arraytar[2];?>
+  }, {
+    "area": "Malang",
+    "cogs": <?=$arraycog[3];?>,
+    "revenue": <?=$arrayrev[3];?>,
+    "income": <?=$arraynet[3];?>,
+    "target": <?=$arraytar[3];?>
+  }, {
+    "area": "Pasuruan",
+    "cogs": <?=$arraycog[4];?>,
+    "revenue": <?=$arrayrev[4];?>,
+    "income": <?=$arraynet[4];?>,
+    "target": <?=$arraytar[4];?>
+  } ],
+  "valueAxes": [ {
+    "axisAlpha": 0,
+    "position": "left"
+  } ],
+  "startDuration": 1,
+  "graphs": [ {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "COGS",
+    "type": "column",
+    "valueField": "cogs",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Revenue",
+    "type": "column",
+    "valueField": "revenue",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Net Income",
+    "type": "column",
+    "valueField": "income",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "id": "graph2",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "title": "Target",
+    "valueField": "target",
+    "dashLengthField": "dashLengthLine"
+  } ],
+  "depth3D": 20,
+  "angle": 30,
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+  "categoryField": "area",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "axisAlpha": 0,
+    "tickLength": 0
+  },
+  "export": {
+    "enabled": true
+  }
+} );
+</script>
+
+                  <?php
+                    $viewtotal  = 0;
+                    $grandtotal = 0;
+                    foreach ($cogs_klasifikasi as $a) {
+                      $klasifikasi  = $a['klasifikasi'];
+                      $total        = $a['total'];
+                      $arraykla[]   = $klasifikasi;
+                      $arraytot[]   = $total;
+                    }
+                  ?>
+
+<!--Evaluasi COGS-->
+<script>
+var chart = AmCharts.makeChart( "chartdiv_evaluasi", {
+  "type": "pie",
+  "theme": "light",
+  "dataProvider": [ {
+    "klasifikasi"   : "<?=$arraykla[0];?>",
+    "jumlah"        : <?=$arraytot[0];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[1];?>",
+    "jumlah"        : <?=$arraytot[1];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[2];?>",
+    "jumlah"        : <?=$arraytot[2];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[3];?>",
+    "jumlah"        : <?=$arraytot[3];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[4];?>",
+    "jumlah"        : <?=$arraytot[4];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[5];?>",
+    "jumlah"        : <?=$arraytot[5];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[6];?>",
+    "jumlah"        : <?=$arraytot[6];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[7];?>",
+    "jumlah"        : <?=$arraytot[7];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[8];?>",
+    "jumlah"        : <?=$arraytot[8];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[9];?>",
+    "jumlah"        : <?=$arraytot[9];?>
+  }, {
+    "klasifikasi"   : "<?=$arraykla[10];?>",
+    "jumlah"        : <?=$arraytot[10];?>
+  } ],
+  "valueField": "jumlah",
+  "titleField": "klasifikasi",
+  "outlineAlpha": 0,
+  "depth3D": 15,
+  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[jumlah]]</b></span>",
+  "marginTop":0,
+  "marginBottom":0,
+  "angle": 30,
+  "labelRadius": 0.5,
+  "export": {
+    "enabled": true
+  }
+} );
+</script>
+
+<script type="text/javascript">
 /*var table; 
 $(document).ready(function() {
  
@@ -265,7 +469,6 @@ $(document).ready(function() {
  
 });*/
 </script>
-
 
 <script type="text/javascript">
   $( "#nosn" ).keyup(function() {

@@ -89,6 +89,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?=base_url('index.php/COGS/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard COGS</a></li>
+            <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Evaluasi COGS</a></li>
             <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
           </ul>
         </li>

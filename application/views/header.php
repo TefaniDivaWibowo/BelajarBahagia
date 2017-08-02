@@ -43,8 +43,16 @@
   <!-- Chart Open -->
   <style>
     #chartdiv {
-      height: 400px;
+      width: 100%;
+      height: 375px;
     }              
+  </style>
+
+  <style>
+  #chartdiv_evaluasi {
+    width: 100%;
+    height: 600px;
+  }                                               
   </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
