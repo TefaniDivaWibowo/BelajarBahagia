@@ -225,47 +225,7 @@
 <script src="<?=base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Select2 -->
 <script src="<?=base_url();?>assets/plugins/select2/select2.full.min.js"></script>
-<!-- Pie Chart -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<!--ColumnChart-->
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-
 <!-- page script -->
-<script type="text/javascript">
-
-/*var table; 
-$(document).ready(function() {
- 
-    //datatables
-    table = $('#example').DataTable({ 
- 
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
- 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "",
-            "type": "POST"
-        },
- 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [ 0 ], //first column / numbering column
-            "orderable": false, //set not orderable
-        },
-        ],
- 
-    });
- 
-});*/
-</script>
-
 
 <script type="text/javascript">
   $( "#nosn" ).keyup(function() {
@@ -280,7 +240,7 @@ $(document).ready(function() {
                     }
     });
   });
-
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -288,37 +248,6 @@ $(document).ready(function() {
         "pagingType": "full_numbers"
     } );
 } );
-
-    //Date picker
-
-  $(document).ready(function() {
-    $('#data_sn').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-  } );
-
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-  } );
-
-  //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    });
-
-    //Date picker
-    $('#datepicker2').datepicker({
-      autoclose: true
-    });
-    $('#datepickerrange').datepicker({
-      autoclose: true
-    });
-
-  //Initialize Select2 Elements
-    $(".select2").select2();  
-
 </script>
 </body>
 </html>

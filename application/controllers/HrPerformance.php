@@ -172,4 +172,32 @@ class HrPerformance extends CI_Controller {
         echo json_encode($output);
     }
     //PIK END
+
+    public function upload_img($id){
+                $inti = $_FILES['filePhoto']['name'];
+                
+                $config['upload_path']          = './profil/';
+                $config['allowed_types']        = 'pdf|jpg|png|doc|docx';
+
+                $this->load->library('upload', $config);
+ 
+                if (!$this->upload->do_upload('filePhoto')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Foto profil baru gagal di-upload')</script>";
+                }
+                else {
+                        $data = array('upload_data' => $this->upload->data());
+                        echo "<script>alert('Foto profil baru berhasil ditambahkan')</script>";
+                }
+
+        $data = array(
+            'foto'        => $inti
+             );
+        $where = array(
+        'nik' => $id
+            );
+        $this->hr->update('data_hr_sec', $data, $where);
+        redirect(base_url('index.php/HrPerformance/view_edit/' . $id),'refresh');
+    }
+    
 }

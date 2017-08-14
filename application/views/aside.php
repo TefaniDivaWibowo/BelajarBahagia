@@ -2,15 +2,15 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <!--<div class="user-panel">
+      <!-- <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?=base_url();?>assets/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div>-->
+      </div> -->
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
@@ -29,6 +29,106 @@
           <a href="#">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
+<<<<<<< HEAD
+=======
+           <ul class="treeview-menu">
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Open Ticket
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_open')?>"><i class="fa fa-circle-o"></i> Import Data Open Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_open')?>"><i class="fa fa-circle-o"></i> Data Open Ticket</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Report Open Ticket
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_month_open')?>"><i class="fa fa-circle-o"></i> Month</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_open')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Close Ticket
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_close')?>"><i class="fa fa-circle-o"></i> Import Data Close Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_close')?>"><i class="fa fa-circle-o"></i> Data Close Ticket</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Report Close Ticket
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Month</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_close')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list"></i> <span>COGS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/COGS/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard COGS</a></li>
+            <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Evaluasi COGS</a></li>
+            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-user"></i> <span>HR Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/HrPerformance/import/')?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> List Data</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Provisioning Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url('index.php/Revenue/prov/data_prov')?>"><i class="fa fa-circle-o"></i> Data Provisioning</a></li>
+            <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Import Data PSB</a></li> -->
+            <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Search
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search BA</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search Data PS</a></li>
+                  </ul>
+            </li>
+          </ul>
+>>>>>>> e1b21b1407ecbd14f809671bc40db9278f5ff9e0
         </li>
         <li class="treeview">
           <a href="">
@@ -55,9 +155,9 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span></a>
               <ul class="treeview-menu">
-                <li><a href="<?= base_url('index.php/revrekon/all_rekon')?>"><i class="fa fa-circle-o"></i> All Data
+                <li><a href="<?= base_url('index.php/revenue/all_rekon')?>"><i class="fa fa-circle-o"></i> All Data
                   </a></li>
-                <li><a href="<?= base_url('index.php/revrekon/rekon')?>"><i class="fa fa-circle-o"></i> Data Sudah Rekon</a></li>
+                <li><a href="<?= base_url('index.php/revenue/rekon')?>"><i class="fa fa-circle-o"></i> Data Sudah Rekon</a></li>
                 <li><a href="<?= base_url('index.php/RevTarget/target_ass')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
               </ul>
             </li>
@@ -142,9 +242,9 @@
                     </span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> BA</a></li>
                     <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
                     <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                    <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search BA</a></li>
                   </ul>
             </li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Service Delivery

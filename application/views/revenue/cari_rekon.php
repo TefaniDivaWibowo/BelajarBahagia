@@ -27,7 +27,7 @@
               <h3 class="box-title">Search Form</h3>
             </div>
             <div class="form-horizontal">
-            <form method="post" action="<?php echo base_url()."index.php/revrekon/cari_all_rekon";?>">
+            <form method="post" action="<?php echo base_url()."index.php/revenue/cari_all_rekon";?>">
             <?php
               $namaBulan = array(1 => "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",  "September", "Oktober",  "November", "Desember");
               $hariIni = time(); // menyimpan tanggal hari ini

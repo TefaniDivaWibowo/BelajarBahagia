@@ -11,10 +11,11 @@ class RevTarget extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header');
+		/*$this->load->view('header');
 		$this->load->view('aside');
 		$this->load->view('revenue/rev_target_ass');
-		$this->load->view('footer');
+		$this->load->view('footer');*/
+		echo "Ini index dari Rev Target";
 	}
 
 	public function target_ass()
@@ -36,7 +37,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'ass'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_ass'),'refresh');
 	}
 
@@ -66,7 +67,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'psb'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_psb'),'refresh');
 
 	}
@@ -97,7 +98,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'mig'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_mig'),'refresh');
 	}
 
@@ -127,7 +128,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'pt2'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_pt2'),'refresh');
 	}
 
@@ -157,7 +158,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'pt3'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_pt3'),'refresh');
 	}
 
@@ -187,7 +188,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'dma'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_main_access'),'refresh');
 	}
 
@@ -217,7 +218,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'gamas'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_gamas'),'refresh');
 	}
 
@@ -247,7 +248,7 @@ class RevTarget extends CI_Controller {
             'divisi'		=> 'mis'
     		);
         $this->RevModel->Update('data_target_rev', $data, $where);
-        echo "<script>alert('Data target revenue berhasil diperbaharui')</script>";
+        echo "<script>alert('Data target revenue berhasil diperbarui')</script>";
         redirect(base_url('index.php/RevTarget/target_mainis'),'refresh');
 	}
 }

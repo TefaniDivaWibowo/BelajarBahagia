@@ -25,7 +25,7 @@
             <div class="box-body box-profile">
             <?php
               if ($a['foto'] != NULL) {
-                echo "<img class='profile-user-img img-responsive img-circle' src='".base_url($a['foto'])."' alt='User profile picture' height='200' width='200'>";
+                echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('profil/'.$a['foto'])."' alt='User profile picture' height='200' width='200'>";
               } else {
                 echo "<img class='profile-user-img img-responsive img-circle' src='".base_url('assets/dist/img/foto/default.png')."' alt='User profile picture' height='200' width='200'>";
               }

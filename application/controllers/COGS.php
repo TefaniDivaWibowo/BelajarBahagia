@@ -20,6 +20,9 @@ class COGS extends CI_Controller {
       //Data Target for Dashboard
       $data['target']                 = $this->Cogs_Model->cogs_target();
 
+      //Data COGS Per Klasifikasi
+      $data['cogs_klasifikasi']    = $this->Cogs_Model->cogs_klas();
+
       /*echo "<pre>";
       print_r($data);
       echo "</pre>";*/
@@ -267,6 +270,17 @@ class COGS extends CI_Controller {
     }
 
     function coba(){
+      $data['cogs'] = $this->Cogs_Model->get_all();
+      $data['bln'] = $this->Cogs_Model->get_cogs();
+      $data['rev'] = $this->Cogs_Model->get_rev();
+      $this->load->view('cogs/graph5', $data);
+    }
+
+    function coba2(){
+      $data['cogs'] = $this->Cogs_Model->get_all();
+      $data['bln'] = $this->Cogs_Model->get_cogs();
+      $data['rev'] = $this->Cogs_Model->get_rev();
+      $this->load->view('cogs/graph3', $data);
       $data['cogs'] = $this->Cogs_Model->get_all_data();
 
       echo "<pre>";

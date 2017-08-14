@@ -281,8 +281,7 @@ class RevModel extends CI_Model{
     }
 
     public function Update($table, $data, $where){
-        $this->db->update($table, $data, $where); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
-        
+        $this->db->update($table, $data, $where); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel       
     }
  
     public function Delete($table, $where){

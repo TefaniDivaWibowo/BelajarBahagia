@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Search for BA
+        Search for Data BA
       </h1>
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,26 +24,15 @@
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Search Form</h3>
+              <h3 class="box-title">Pencarian Presentase Data PS Dilengkasi BA</h3>
             </div>
             <div class="form-horizontal">
-            <form method="post" action="<?php echo base_url()."index.php/searchrev/hasil_ba";?>">
+            <form method="post" action="<?php echo base_url()."index.php/prov/hasil_ps";?>">
               <div class="box-body">
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Pilih Kategori</label>
+                  <label class="col-sm-2 control-label">Nomor Internet</label>
                   <div class="col-sm-10">
-                    <select name="kategori" class="form-control" name="wilayah" required/>
-                    <option value="nomor_inet" >Nomor Internet</option>
-                    <option value="nomor_telp">Nomor Telepon</option>
-                    <option value="nomor_ont">Serial Number ONT</option>
-                  </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Data Pencarian</label>
-                  <div class="col-sm-10">
-                    <textarea class="form-control" type="textarea" placeholder="Ketikkan beberapa data untuk pencarian" name="data_cari" required></textarea>
+                    <textarea class="form-control" type="textarea" placeholder="Ketikkan beberapa nomor internet untuk pencarian" name="no_inet" required></textarea>
                   </div>
                 </div>
 
@@ -61,6 +50,9 @@
             <div style="overflow-x:auto;">
               <table id="example" class="display" width="100%" cellspacing="0" class="table table-bordered table-hover" >
                 <thead>
+                <!-- <tr><td colspan="5">
+                  Jumlah semua data PS <?php echo $all; ?>
+                </td></tr> -->
                 <tr>
                   <th>Bukti BA</th>
                   <th>ID REV</th>
@@ -94,18 +86,11 @@
                 <?php
                   $no = 0;
                       foreach($cari as $p){
+                        $array[] = $b['id_rev'];
                         $no++;
 
                   ?>
                   <tr>
-                    <?php
-                      if($p['ba_rev'] != NULL ){?>
-                        <td><a href="base_url();../../../../uploads/<?= $p['ba_rev'];?>"><?= $p['ba_rev'];?></a></td>                        
-                        <?php } else{?>
-
-                    <td><a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_rev'] ."";?>">Upload BA</a></td>
-                        <?php }
-                    ?>
                     <td><?= $p['id_rev'];?></td>
                     <td><?= $p['mdf'];?></td>
                     <td><?= $p['nomor_pots'];?></td>
@@ -133,11 +118,15 @@
                   </tr>
                   <?php
                   }
+                    $jumlah = COUNT($array);
+                    $hasil = $jumlah/$all*100;
                 ?>
-
               </tbody>
             </table>
             </div>
+            <br>
+
+            <h3>Presentase Kelengkapan BA Instalasi <?= ROUND($hasil, 2);?>%</h3>
             </div>
             <!-- /.box-body -->
           </div>
