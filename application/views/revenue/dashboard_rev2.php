@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        TARGET KM-2 AREA () 2017
+        TARGET KM-2 AREA FZ JATIM 2 2017
         <!-- <small>Version 1.0</small> -->
       </h1>
     </section>
@@ -34,50 +34,76 @@
             <div class="box-body no-padding">
               <table class="table table-condensed">
                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Task</th>
-                  <th>Progress</th>
-                  <th style="width: 40px">Label</th>
+                  <th width="18%">&nbsp</th>
+                  <th width="10%" class="danger">REV</th>
+                  <th width="30%" class="danger">PROGRAM</th>
+                  <th width="2%">&nbsp</th>
+                  <th width="10%">&nbsp</th>
+                  <th width="30%">&nbsp</th>
                 </tr>
                 <tr>
-                  <td>1.</td>
-                  <td>Update software</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">55%</span></td>
+                  <th style=" text-align:center;">TARGET</th>
+                  <th rowspan="2" style="background-color:#7f8c8d; color:#fff; vertical-align:middle">(Nilai Rev)</th>
+                  <th rowspan="2" style="background-color:#f1c40f; color:#fff; vertical-align:middle">Infrastructure Delivery</th>
+                  <th>>></th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#f1c40f; color:#fff;">Migration</th>
                 </tr>
                 <tr>
-                  <td>2.</td>
-                  <td>Clean database</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-yellow">70%</span></td>
+                  <th style=" text-align:center;">REVENUE</th>
+                  <th>&nbsp</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#f1c40f; color:#fff;">Prog Optimization PT2</th>
                 </tr>
                 <tr>
-                  <td>3.</td>
-                  <td>Cron job running</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <th>&nbsp</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#f39c12; color:#fff;">Assurance</th>
                 </tr>
                 <tr>
-                  <td>4.</td>
-                  <td>Fix and squish bugs</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
+                  <th style=" text-align:center;" class="danger"><?php echo $all_rev?> M</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#e67e22; color:#fff;">Provisioning Indihome</th>
+                  <th>&nbsp</th>
+                  <th>&nbsp</th>
+                </tr>
+                <tr>
+                  <th style=" text-align:center;" rowspan="4"><img alt="Dart" width="180px" height="120px" src="<?=base_url();?>assets/dist/img/dart.jpg"></th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#d35400; color:#fff;">Maintenance Infra Support</th>
+                  <th>&nbsp</th>
+                  <th>&nbsp</th>
+                </tr>
+                <tr>
+                  <th rowspan="2" style="background-color:#7f8c8d; color:#fff; vertical-align:middle">(Nilai Rev)</th>
+                  <th rowspan="2" style="background-color:#e74c3c; color:#fff; vertical-align:middle">Infrastructur Service</th>
+                  <th>>></th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#e74c3c; color:#fff;">Maintenance Akses</th>
+                </tr>
+                <tr>
+                  <th>&nbsp</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#e74c3c; color:#fff;">Gamas & QE</th>
+                </tr>                
+                <tr>
+                  <th rowspan="3" style="background-color:#7f8c8d; color:#fff; vertical-align:middle">(Nilai Rev)</th>
+                  <th rowspan="3" style="background-color:#c0392b; color:#fff; vertical-align:middle">Service Delivery</th>
+                  <th>>></th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#c0392b; color:#fff;">Prog Optimization PT2</th>
+                </tr>
+                <tr>
+                  <th>&nbsp</th>
+                  <th>&nbsp</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#c0392b; color:#fff;">NODE B</th>
+                </tr>
+                <tr>
+                  <th>&nbsp</th>
+                  <th>&nbsp</th>
+                  <th style="background-color:#7f8c8d; color:#fff;">(Nilai Rev)</th>
+                  <th style="background-color:#c0392b; color:#fff;">HEM</th>
                 </tr>
               </table>
             </div>

@@ -119,6 +119,24 @@
     }    
       return $query->row()->total;
     }
+    //Untuk Kegiatan Controller Provisioning
+    function data_ps($no){
+      $cari = $this->db
+             ->query("SELECT * FROM data_psb WHERE nomor_speedy IN(".$no.")");
+      return $cari->result_array();
+    }
+
+    function get_all(){
+      $this->db->from('data_psb');
+      $query  = $this->db->get();
+      return $query->num_rows();
+    }
+
+    function get_target_prov(){
+      $cari = $this->db
+             ->query("SELECT sto, COUNT(sto) AS total FROM data_provisioning WHERE status_rekon = 'NOK' OR status_rekon = 'nok' GROUP BY sto ORDER BY sto");
+      return $cari->result_array();
+    }
 
 }
 ?>

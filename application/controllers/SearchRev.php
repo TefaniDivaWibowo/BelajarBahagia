@@ -19,13 +19,6 @@ class SearchRev extends CI_Controller {
 		echo "Hai ini base controller SearchRev";
 	}
 
-	public function cari_sn(){
-		$this->load->view('header');
-		$this->load->view('aside');
-		$this->load->view('search/search_sn2');
-		$this->load->view('footer');
-	}
-
 	public function cari_ba()
 	{		
 		$this->load->view('header');
@@ -42,14 +35,6 @@ class SearchRev extends CI_Controller {
 		$this->load->view('aside');
 		$data['cari'] 	= $this->cari->get_search_data($kt, $isi);
 		$this->load->view('revenue/cari_ba', $data);
-		$this->load->view('footer');
-	}
-
-	public function cari_by_date2()
-	{
-		$this->load->view('header');
-		// $this->load->view('aside');
-		$this->load->view('revenue/cari_by_date2');
 		$this->load->view('footer');
 	}
 
@@ -95,6 +80,7 @@ class SearchRev extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+//Tidak terpakai
 	public function cari_hasil_lama()
 	{
 		$kt 		= $this->input->post('kategori');

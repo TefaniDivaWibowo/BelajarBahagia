@@ -15,6 +15,7 @@ class Revenue extends CI_Controller {
 		$this->load->view('aside');
 		$data['psb'] = $this->RevModel->get_prov();
 		$data['rev'] = $this->RevModel->get_psb();
+		$data['all_rev'] = $this->RevModel->get_all_rev();
 		$this->load->view('revenue/dashboard_rev2', $data);
 		$this->load->view('footer');
 	}
@@ -1507,14 +1508,6 @@ class Revenue extends CI_Controller {
 	public function rekon_cek1()
 	{
         $this->load->view('selisih');
-	}
-// Untuk Provisioning Performance
-	public function data_prov(){
-		$data['psb'] = $this->RevModel->get_all_psb();
-		$this->load->view('header');
-		$this->load->view('aside');
-		$this->load->view('revenue/table_prov', $data);
-		$this->load->view('footer');
 	}
 
 	public function detail_prov($id)

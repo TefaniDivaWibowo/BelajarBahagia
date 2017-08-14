@@ -1,12 +1,9 @@
- <?php
- error_reporting(0);
- ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Assurance
+        Data Maintenance Access
       </h1>
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -21,7 +18,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Revenue Assurance Rp <b><?= $rev;?> B</b></h3>
+              <h3 class="box-title">Revenue Maintenance Access Rp <b><?= $rev;?> B</b></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -68,7 +65,7 @@
                     <td><?= $p['id_rev'];?></td>
                     <td><?= $p['mdf'];?></td>
                     <td><?= $p['nomor_pots'];?></td>
-                    <td> <a href="<?php echo base_url()."index.php/Revenue/detail_prov/" . $p['id_rev'] ."";?>"><?= $p['nomor_speedy'];?></a></td>
+                    <td><?= $p['nomor_speedy'];?></td>
                     <td><?= $p['nama'];?></td>
                     <td><?= $p['alamat'];?></td>
                     <td><?= $p['odp'];?></td>
