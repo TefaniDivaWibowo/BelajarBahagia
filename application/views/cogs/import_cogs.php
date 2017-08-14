@@ -47,9 +47,10 @@
     <section class="content">
       <div class="callout callout-danger">
         <h4>Perhatian!</h4>
-
-        <p>Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
-          large screens because it prevents the site from stretching very wide.</p>
+        <p>1. Jadikan setiap tanggal menjadi "Date Format" dan setiap angka yang ada menjadi "Number Format" (tanpa titik ataupun koma diantara angka)</p>
+        <p>2. Urutan dari kolom yang harus dipenuhi, yaitu: Reference; Account; Nama Akun; Gab Akun & CC; BA; Cost Center; Profit Center; Direktorat (TB); OSM (TB); GM/PM (TB); UNIT (TB); Area; Group Akun; Group; Posting Key; Document Type; Posting Period; Document Date; Document Number; Assignment; Posting Date; Document Currency; Amount in doc/ cur/; Amount in Local Currency; Text; Klasifikasi; Account; Cost Center; Portofolio; Trading Partner</p>
+        <br>
+        <p></p>
       </div>
 
       <div class="box box-default">

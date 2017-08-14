@@ -87,6 +87,7 @@ class HrPerformance extends CI_Controller {
             );
             
             $insert = $this->db->insert("data_hr", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
+            $insert = $this->db->insert("data_hr_sec", $data); 
             delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
         }
         

@@ -27,100 +27,8 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-wrench"></i> 
-            <span>Assurance Performance</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-home"></i> <span>Home</span>
           </a>
-           <ul class="treeview-menu">
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Open Ticket
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?=base_url('index.php/AssurancePerformance/import_open')?>"><i class="fa fa-circle-o"></i> Import Data Open Ticket</a></li>
-                <li><a href="<?=base_url('index.php/AssurancePerformance/data_open')?>"><i class="fa fa-circle-o"></i> Data Open Ticket</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Report Open Ticket
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_month_open')?>"><i class="fa fa-circle-o"></i> Month</a></li>
-                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_open')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Close Ticket
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?=base_url('index.php/AssurancePerformance/import_close')?>"><i class="fa fa-circle-o"></i> Import Data Close Ticket</a></li>
-                <li><a href="<?=base_url('index.php/AssurancePerformance/data_close')?>"><i class="fa fa-circle-o"></i> Data Close Ticket</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Report Close Ticket
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Month</a></li>
-                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_close')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-list"></i> <span>COGS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?=base_url('index.php/COGS/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard COGS</a></li>
-            <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Evaluasi COGS</a></li>
-            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="">
-            <i class="fa fa-user"></i> <span>HR Performance</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?=base_url('index.php/HrPerformance/import/')?>"><i class="fa fa-circle-o"></i> Import Data</a></li>
-            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> List Data</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>Provisioning Performance</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
         </li>
         <li class="treeview">
           <a href="">
@@ -271,8 +179,154 @@
             </li>
           </ul>
         </li>
-        <li> <!-- class="active treeview" -->
         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list"></i> <span>COGS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/COGS/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard COGS</a></li>
+            <li class="treeview">
+              <a href="">
+                <i class="fa fa-circle-o"></i> <span>Evaluasi COGS</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> COGS Year to Date/Month</a></li>
+                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi_all')?>"><i class="fa fa-circle-o"></i> COGS per Pengeluaran</a></li>
+              </ul>
+            </li>
+            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data COGS</a></li>
+            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Input Target</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-user"></i> <span>HR Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> Dashboard PBS</a></li>
+            <li class="treeview">
+              <a href="">
+                <i class="fa fa-circle-o"></i> <span>Import Data</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Import Data HR</a></li>
+                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi')?>"><i class="fa fa-circle-o"></i> Import Data PBS</a></li>
+              </ul>
+            </li>
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> Kontrak Management</a></li>
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> List Data HR</a></li>
+            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> Mapping SM to TL</a></li>
+            <li class="treeview">
+              <a href="">
+                <i class="fa fa-circle-o"></i> <span>Report HR</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Performance SM</a></li>
+                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi')?>"><i class="fa fa-circle-o"></i> Performance TL</a></li>
+                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi')?>"><i class="fa fa-circle-o"></i> Performance Teknisi</a></li>
+                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi')?>"><i class="fa fa-circle-o"></i> Trend Performansi Individu</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Provisioning Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-wrench"></i> 
+            <span>Assurance Performance</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+           <ul class="treeview-menu">
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Open Ticket
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_open')?>"><i class="fa fa-circle-o"></i> Import Data Open Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_open')?>"><i class="fa fa-circle-o"></i> Data Open Ticket</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Report Open Ticket
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_month_open')?>"><i class="fa fa-circle-o"></i> Month</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_open')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Close Ticket
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/AssurancePerformance/import_close')?>"><i class="fa fa-circle-o"></i> Import Data Close Ticket</a></li>
+                <li><a href="<?=base_url('index.php/AssurancePerformance/data_close')?>"><i class="fa fa-circle-o"></i> Data Close Ticket</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Report Close Ticket
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Month</a></li>
+                    <li><a href="<?=base_url('index.php/AssurancePerformance/report_ytd_close')?>"><i class="fa fa-circle-o"></i> Year to Date</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="">
+                <i class="fa fa-circle-o"></i> <span>Report</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Trend GGN per Teritory</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
 
         <li class="treeview">
           <a href="<?=base_url("index.php/SearchSN/");?>">

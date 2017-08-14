@@ -224,16 +224,16 @@
 <script src="<?=base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Select2 -->
 <script src="<?=base_url();?>assets/plugins/select2/select2.full.min.js"></script>
-<!-- Pie Chart -->
+
+<!-- Chart -->
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<!--ColumnChart-->
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 
-<!-- page script -->
+<!-- START DASHBOARD COGS-->
               <?php
                   foreach ($target as $b) {
                     $number   = $b['target'];
@@ -258,15 +258,15 @@
                   }
 
             ?>
-<!--Dashboard COGS-->
 <script>
-var chart = AmCharts.makeChart( "chartdiv", {
+$( document ).ready(function() {
+  var chart = AmCharts.makeChart( "chartdiv_dashboardcogs", {
   "type": "serial",
   "addClassNames": true,
   "theme": "light",
   "autoMargins": false,
-  "marginLeft": 110,
-  "marginRight": 8,
+  "marginLeft": 120,
+  "marginRight": 5,
   "marginTop": 10,
   "marginBottom": 26,
   "balloon": {
@@ -373,63 +373,92 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "enabled": true
   }
 } );
+});
 </script>
 
+<!--START EVALUASI COGS YTD-->
                   <?php
                     $viewtotal  = 0;
                     $grandtotal = 0;
-                    foreach ($cogs_klasifikasi as $a) {
+                    foreach ($cogs_klasifikasi_all as $a) {
                       $klasifikasi  = $a['klasifikasi'];
                       $total        = $a['total'];
                       $arraykla[]   = $klasifikasi;
-                      $arraytot[]   = $total;
-                    }
-                  ?>
+                      
+                      if ($total < 0) {
+                        $total = $total * -1;
+                      }
 
-<!--Evaluasi COGS-->
+                      $arraytot[]   = $total;
+                    } 
+                  ?>
 <script>
-var chart = AmCharts.makeChart( "chartdiv_evaluasi", {
+  var chart = AmCharts.makeChart( "chartdiv_evaluasi_all", {
+    "type": "pie",
+    "theme": "light",
+    "dataProvider": [ 
+      <?php 
+        foreach ($cogs_klasifikasi_all as $key => $value) {
+      ?>
+        {
+          "klasifikasi"   : "<?=$arraykla[$key];?>",
+          "jumlah"        : <?=$arraytot[$key];?>
+        }, //Anehnya ini pakek koma kenapa bisa berulang ya? La yang terakhir tetep bisa .-.
+      <?php 
+        } 
+      ?> ],
+    "valueField": "jumlah",
+    "titleField": "klasifikasi",
+    "outlineAlpha": 0,
+    "depth3D": 15,
+    "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[jumlah]]</b></span>",
+    "marginTop":0,
+    "marginBottom":0,
+    "angle": 30,
+    "labelRadius": 0.5,
+    "export": {
+      "enabled": true
+    }
+  } );
+</script>
+<!--END CHART-->
+
+<!--START EVALUASI COGS AREA-->
+                  <?php
+                    $viewtotalarea  = 0;
+                    $grandtotalarea = 0;
+                    foreach ($cogs_klasifikasi_area as $b) {
+                      $klasifikasiarea      = $b['klasifikasi'];
+                      $totalarea            = $b['total'];
+                      $arrayklaarea[]       = $klasifikasiarea;
+                      
+                      if ($totalarea < 0) {
+                        $totalarea = $totalarea * -1;
+                      }
+
+                      $arraytotarea[]   = $totalarea;
+                    } 
+                  ?>
+<script>
+var chart = AmCharts.makeChart( "chartdiv_evaluasi_area", {
   "type": "pie",
   "theme": "light",
-  "dataProvider": [ {
-    "klasifikasi"   : "<?=$arraykla[0];?>",
-    "jumlah"        : <?=$arraytot[0];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[1];?>",
-    "jumlah"        : <?=$arraytot[1];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[2];?>",
-    "jumlah"        : <?=$arraytot[2];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[3];?>",
-    "jumlah"        : <?=$arraytot[3];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[4];?>",
-    "jumlah"        : <?=$arraytot[4];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[5];?>",
-    "jumlah"        : <?=$arraytot[5];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[6];?>",
-    "jumlah"        : <?=$arraytot[6];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[7];?>",
-    "jumlah"        : <?=$arraytot[7];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[8];?>",
-    "jumlah"        : <?=$arraytot[8];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[9];?>",
-    "jumlah"        : <?=$arraytot[9];?>
-  }, {
-    "klasifikasi"   : "<?=$arraykla[10];?>",
-    "jumlah"        : <?=$arraytot[10];?>
-  } ],
-  "valueField": "jumlah",
-  "titleField": "klasifikasi",
+  "dataProvider": [ 
+    <?php 
+      foreach ($cogs_klasifikasi_area as $key => $value) {
+    ?>
+      {
+        "klasifikasiarea" : "<?=$arrayklaarea[$key];?>",
+        "totalarea"       : <?=$arraytotarea[$key];?>
+      }, 
+    <?php 
+      } 
+    ?> ],
+  "valueField": "totalarea",
+  "titleField": "klasifikasiarea",
   "outlineAlpha": 0,
   "depth3D": 15,
-  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[jumlah]]</b></span>",
+  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[totalarea]]</b></span>",
   "marginTop":0,
   "marginBottom":0,
   "angle": 30,
@@ -439,6 +468,309 @@ var chart = AmCharts.makeChart( "chartdiv_evaluasi", {
   }
 } );
 </script>
+<!--END CHART-->
+
+<!--START EVALUASI PER KLASIFIKASI-->
+                  <?php
+                    foreach ($cogs_per_klasifikasi as $a) {
+                      $periode  = $a['posting_period'];
+                      $jumlah   = $a['jumlah'];
+
+                      if ($jumlah < 0) {
+                        $jumlah = $jumlah * -1;
+                      }
+
+                      $arrayperiod[]      = $periode;
+                      $arraypenglubang[]  = $jumlah;
+                      $arraypenglugar[]   = $jumlah;
+                    }
+                  ?>
+
+<script>
+var chart = AmCharts.makeChart( "chartdiv_cogs_klasifikasi", {
+  "type": "serial",
+  "addClassNames": true,
+  "theme": "light",
+  "autoMargins": false,
+  "marginLeft": 100,
+  "marginRight": 8,
+  "marginTop": 10,
+  "marginBottom": 26,
+  "balloon": {
+    "adjustBorderColor": false,
+    "horizontalPadding": 10,
+    "verticalPadding": 8,
+    "color": "#ffffff"
+  }/*,
+  "legend": {
+    "horizontalGap": 10,
+    "useGraphSettings": true,
+    "markerSize": 10
+  }*/,
+
+  "dataProvider": [ 
+      <?php 
+        foreach ($cogs_per_klasifikasi as $key => $value) {
+      ?>
+        {
+          "period"              : <?=$arrayperiod[$key];?>,
+          "pengeluaranbatang"   : <?=$arraypenglubang[$key];?>,
+          "pengeluarangaris"    : <?=$arraypenglugar[$key];?>
+        }, 
+      <?php 
+        } 
+      ?>
+  ],
+  "startDuration": 1,
+  "graphs": [ {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Jumlah Pengeluaran",
+    "type": "column",
+    "valueField": "pengeluaranbatang",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "id": "graph2",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "title": "Jumlah Pengeluaran",
+    "valueField": "pengeluarangaris",
+    "dashLengthField": "dashLengthLine"
+  } ],
+  "depth3D": 20,
+  "angle": 30,
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+  "categoryField": "period",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "axisAlpha": 0,
+    "tickLength": 0
+  },
+  "export": {
+    "enabled": true
+  }
+} );
+</script>
+<!--END CHART-->
+
+<!--START EVALUASI KLASIFIKASI ALL CHART LINE-->
+<script>
+var chart = AmCharts.makeChart("chartdiv_allkla_line", {
+  "type": "serial",
+  "categoryField": "category",
+  "startDuration": 1,
+  "categoryAxis": {
+    "gridPosition": "start"
+  },
+  "trendLines": [],
+  "graphs": [
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-1",
+      "title": "ALKER,SALKER,KBM",
+      "valueField": "ALKER,SALKER,KBM"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-2",
+      "title": "AMORTISASI",
+      "valueField": "AMORTISASI"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-3",
+      "title": "BBM",
+      "valueField": "BBM"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-4",
+      "title": "DEPRESIASI",
+      "valueField": "DEPRESIASI"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-5",
+      "title": "GAJI",
+      "valueField": "GAJI"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-6",
+      "title": "MATERIAL ALISTA",
+      "valueField": "MATERIAL ALISTA"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-7",
+      "title": "MATERIAL NON PO",
+      "valueField": "MATERIAL NON PO"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-8",
+      "title": "PENGELUARAN IF",
+      "valueField": "PENGELUARAN IF"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-9",
+      "title": "SEWA GEDUNG",
+      "valueField": "SEWA GEDUNG"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-10",
+      "title": "SEWA KBM",
+      "valueField": "SEWA KBM"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-11",
+      "title": "SPPD",
+      "valueField": "SPPD"
+    },
+    {
+      "balloonText": "[[title]] of [[category]]:[[value]]",
+      "bullet": "round",
+      "id": "AmGraph-12",
+      "title": "TAGIHAN MITRA",
+      "valueField": "TAGIHAN MITRA"
+    }
+  ],
+  "guides": [],
+  "allLabels": [],
+  "balloon": {},
+  "legend": {
+    "enabled": true,
+    "useGraphSettings": true
+  },
+  "titles": [
+    {
+      "id": "Title-1",
+      "size": 15,
+      "text": "EVALUASI COGS FIBER ZONE 2 PER PENGELUARAN"
+    }
+  ],
+  "dataProvider": [
+    {
+      "ALKER,SALKER,KBM": 26928216,
+      "category": "1",
+      "AMORTISASI": 7376492,
+      "BBM": 50232725,
+      "DEPRESIASI": 223050733,
+      "GAJI": 2287665407,
+      "MATERIAL ALISTA": 6709017819,
+      "MATERIAL NON PO": 0,
+      "PENGELUARAN IF": 146971842,
+      "SEWA GEDUNG": 0,
+      "SEWA KBM": 3850000,
+      "SPPD": 9430000,
+      "TAGIHAN MITRA": 1828933674
+    },
+    {
+      "ALKER,SALKER,KBM": 128369950,
+      "category": "2",
+      "AMORTISASI": 9101380,
+      "BBM": 161588744,
+      "DEPRESIASI": 440389068,
+      "GAJI": 2763808115,
+      "MATERIAL ALISTA": 3176227326,
+      "MATERIAL NON PO": 0,
+      "PENGELUARAN IF": 241542492,
+      "SEWA GEDUNG": 200000,
+      "SEWA KBM": 3850000,
+      "SPPD": 19529250,
+      "TAGIHAN MITRA": 1516134505
+    },
+    {
+      "ALKER,SALKER,KBM": 757537050,
+      "category": "3",
+      "AMORTISASI": 9039074,
+      "BBM": 214158775,
+      "DEPRESIASI": 110698893,
+      "GAJI": 2578325610,
+      "MATERIAL ALISTA": 2847734877,
+      "MATERIAL NON PO": 0,
+      "PENGELUARAN IF": 393442958,
+      "SEWA GEDUNG": 400811810,
+      "SEWA KBM": 0,
+      "SPPD": 30195000,
+      "TAGIHAN MITRA": 2226403415
+    },
+    {
+      "ALKER,SALKER,KBM": 164463684,
+      "category": "4",
+      "AMORTISASI": 9039074,
+      "BBM": 103299818,
+      "DEPRESIASI": 326873049,
+      "GAJI": 2529023658,
+      "MATERIAL ALISTA": 4022991288,
+      "MATERIAL NON PO": 0,
+      "PENGELUARAN IF": 234476313,
+      "SEWA GEDUNG": 2665000,
+      "SEWA KBM": 38415921,
+      "SPPD": 25575000,
+      "TAGIHAN MITRA": 2003584578
+    },
+    {
+      "ALKER,SALKER,KBM": 92431881,
+      "category": "5",
+      "AMORTISASI": 14140142,
+      "BBM": 166830672,
+      "DEPRESIASI": 209808304,
+      "GAJI": 2514521294,
+      "MATERIAL ALISTA": 3804190902,
+      "MATERIAL NON PO": 0,
+      "PENGELUARAN IF": 417731571,
+      "SEWA GEDUNG": 1631000,
+      "SEWA KBM": 3465000,
+      "SPPD": 51552572,
+      "TAGIHAN MITRA": 2516410129
+    },
+    {
+      "ALKER,SALKER,KBM": 156463184,
+      "category": "6",
+      "AMORTISASI": 9039074,
+      "BBM": 169523877,
+      "DEPRESIASI": 258450676,
+      "GAJI": 3482892942,
+      "MATERIAL ALISTA": 3097148741,
+      "MATERIAL NON PO": 200000,
+      "PENGELUARAN IF": 669061583,
+      "SEWA GEDUNG": 369903852,
+      "SEWA KBM": 40715921,
+      "SPPD": 34584488,
+      "TAGIHAN MITRA": 2694477870
+    }
+  ]
+});
+</script>
+<!-- END -->
 
 <script type="text/javascript">
 /*var table; 

@@ -41,19 +41,51 @@
   <link rel="stylesheet" href="<?=base_url();?>assets/plugins/select2/select2.min.css">
 
   <!-- Chart Open -->
+
+  <!--START DASHBOARD COGS-->
   <style>
-    #chartdiv {
+    #chartdiv_dashboardcogs {
       width: 100%;
       height: 375px;
     }              
   </style>
+  <!--END DASHBOARD COGS-->
 
+  <!--START EVALUASI ALL-->
   <style>
-  #chartdiv_evaluasi {
-    width: 100%;
-    height: 600px;
-  }                                               
+    #chartdiv_evaluasi_all {
+      width: 100%;
+      height: 500px;
+    }                                               
   </style>
+  <!--END EVALUASI ALL-->
+
+  <!--START EVALUASI AREA-->
+  <style>
+    #chartdiv_evaluasi_area {
+      width: 100%;
+      height: 500px;
+    }                                               
+  </style>
+  <!--END-->
+
+  <!--START EVALUASI PER KLASIFIKASI-->
+  <style>
+    #chartdiv_cogs_klasifikasi {
+      width: 100%;
+      height: 500px;
+    }                                               
+  </style>
+  <!--END-->
+
+  <!--START EVALUASI KLASIFIKASI ALL CHART LINE-->
+  <style>
+    #chartdiv_allkla_line {
+      width : 100%;
+      height  : 500px;
+    }                 
+  </style>
+  <!--END-->
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,7 +103,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>TA</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="<?=base_url();?>assets/dist/img/New-Logo-TA-2016.png" height="35" width="190"></span>
+      <span class="logo-lg"><img src="<?=base_url();?>assets/dist/img/New-Logo-TA-2016.png" height="45" width="190"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

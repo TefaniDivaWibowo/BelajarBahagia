@@ -1,3 +1,7 @@
+<?php
+  error_reporting(0);
+?>
+
 <!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -61,7 +65,7 @@
 
 
           <div class="box">
-            <div id="chartdiv"></div>  
+            <div id="chartdiv_dashboardcogs"></div>  
           </div>
           
           <div class="box">
@@ -154,28 +158,28 @@
                   }
                 ?>
                 <tr>
-                  <td>FIBER ZONE JATIM 2</td>
-                  <td style="text-align: center;"><?= 
+                  <th>FIBER ZONE JATIM 2</th>
+                  <th style="text-align: center;"><?= 
                     $c  = number_format($cfz2,2,",",".");
                     $c;
-                  ?></td>
-                  <td style="text-align: center;"><?= 
+                  ?></th>
+                  <th style="text-align: center;"><?= 
                     $r  = number_format($rfz2,2,",",".");
                     $r;
-                  ?></td>
-                  <td style="text-align: center;"><?= 
+                  ?></th>
+                  <th style="text-align: center;"><?= 
                     $i  = number_format($ifz2,2,",",".");
                     $i;
-                  ?></td>
-                  <td style="text-align: center;"><?= 
+                  ?></th>
+                  <th style="text-align: center;"><?= 
                     $t  = number_format($tfz2,2,",",".");
                     $t;
-                  ?></td>
-                  <td style="text-align: center;">
+                  ?></th>
+                  <th style="text-align: center;">
                     <?=
                       $persen   = round(($rfz2/$tfz2)*$kali) . "%";
                     ?>
-                  </td>
+                  </th>
                 </tr>
               </table>
             </div>
