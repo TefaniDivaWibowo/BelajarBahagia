@@ -164,9 +164,26 @@
 
     function cogs_target(){
       $bultah1  = "01" . date('Y');
-      $bultah   = date('mY');
+      $bulan    = date('m', strtotime('-1 month'));;
+      $tahun    = date('Y');
+      $bultah   = $bulan . $tahun;
+      //date('mY');
       $query    = $this->db->query("SELECT area, SUM(target) as target FROM data_target WHERE bultah BETWEEN '$bultah1' AND '$bultah' GROUP BY area ORDER BY area");
       return $query->result_array();
     }
+
+    function trend_rev_all(){
+      $query    = $this->db->query("SELECT posting_period, SUM(amount_in_doc_curr) as total FROM data_cogs WHERE group_tipe = 'Pendapatan' AND posting_period > 0 GROUP BY posting_period ORDER BY posting_period");
+      return $query->result_array();
+    }
+
+    function trend_rev($area){
+      $query    = $this->db->query("SELECT area, posting_period, SUM(amount_in_doc_curr) as total FROM data_cogs WHERE group_tipe = 'Pendapatan' AND area = '$area' AND posting_period > 0  GROUP BY area, posting_period ORDER BY area, posting_period");
+      return $query->result_array();
+    }
 }
+
+//COGS PER BULAN (AREA)
+/*SELECT area, posting_period, SUM(amount_in_doc_curr) as total FROM data_cogs WHERE group_tipe = 'COGS' GROUP BY area, posting_period ORDER BY area, posting_period*/
 ?>
+

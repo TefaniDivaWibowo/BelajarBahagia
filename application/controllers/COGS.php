@@ -6,6 +6,7 @@ class COGS extends CI_Controller {
       parent::__construct();
       $this->load->database();
       $this->load->helper('url');
+      $this->load->library('PHPExcel');
       $this->load->model('Cogs_Model');
       $this->load->library('session');
     }
@@ -24,7 +25,7 @@ class COGS extends CI_Controller {
       $data['cogs_klasifikasi']    = $this->Cogs_Model->cogs_klas();
 
       /*echo "<pre>";
-      print_r($data);
+      print_r($data['fz2_ytd_cogs']);
       echo "</pre>";*/
 
       $this->load->view('header');
@@ -262,11 +263,83 @@ class COGS extends CI_Controller {
       //$this->load->view('cogs/formula2', $data);
     }
 
-    function import(){
-    	$this->load->view('header');
-  		$this->load->view('aside');
-  		$this->load->view('cogs/import_cogs');
-  		$this->load->view('footer');
+    function rev(){
+      $area   = $this->input->post('area');
+
+      //echo $area;
+
+      if ($area == NULL || $area == "all") {
+        $this->revenue();
+      } else {
+        $this->revenue_m($area);
+      }
+
+      
+    }
+
+    function revenue(){
+      //Data COGS per Area for Dashboard
+      $data['fz2_ytd_cogs']           = $this->Cogs_Model->get_fz2_ytd_cogs();
+
+      //Data REV per Area for Dashboard
+      $data['fz2_ytd_rev']            = $this->Cogs_Model->get_fz2_ytd_rev();
+
+      //Data Target for Dashboard
+      $data['target']                 = $this->Cogs_Model->cogs_target();
+
+      //Data COGS Per Klasifikasi
+      $data['cogs_klasifikasi']    = $this->Cogs_Model->cogs_klas();
+
+      $data['trend_rev']   = $this->Cogs_Model->trend_rev_all();
+      
+      /*echo "<pre>";
+      print_r($data['trend_rev']);
+      echo "</pre>";*/
+      
+      $this->load->view('header');
+      $this->load->view('aside');
+      $this->load->view('cogs/evaluasi_revenue_all', $data);
+      $this->load->view('cogs/footer_cogs', $data);
+    }
+
+    function revenue_m($area){
+      //Data COGS per Area for Dashboard
+      $data['fz2_ytd_cogs']           = $this->Cogs_Model->get_fz2_ytd_cogs();
+
+      //Data REV per Area for Dashboard
+      $data['fz2_ytd_rev']            = $this->Cogs_Model->get_fz2_ytd_rev();
+
+      //Data Target for Dashboard
+      $data['target']                 = $this->Cogs_Model->cogs_target();
+
+      //Data COGS Per Klasifikasi
+      $data['cogs_klasifikasi']       = $this->Cogs_Model->cogs_klas();
+
+      $data['trend_rev']    = $this->Cogs_Model->trend_rev($area);
+      $data['area']         = $area;
+      
+      /*echo "<pre>";
+      print_r($data);
+      echo "</pre>";*/
+
+      $this->load->view('header');
+      $this->load->view('aside');
+      $this->load->view('cogs/evaluasi_revenue_m', $data);
+      $this->load->view('cogs/footer_cogs', $data);
+    }
+
+    public function import(){ //All data use Data HR Sec 
+      $msg    = $this->uri->segment(3);
+          $alert  = '';
+          if($msg == 'success'){
+              $alert  = 'Success!!';
+          }
+          $data['_alert'] = $alert;
+
+      $this->load->view('header');
+      $this->load->view('aside');
+      $this->load->view('cogs/import_cogs', $data);
+      $this->load->view('footer');
     }
 
     function coba(){
@@ -300,7 +373,7 @@ class COGS extends CI_Controller {
         $this->load->library('upload');
         $this->upload->initialize($config);
 
-        $this->db->delete("data_cogs", $data); 
+        $this->db->empty_table("data_cogs"); 
 
         if (!$this->upload->do_upload('fileImport'))
             $this->upload->display_errors();
@@ -360,6 +433,36 @@ class COGS extends CI_Controller {
             delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
         }
         
-        redirect(base_url('HrPerformance/import/success'));
+        redirect(base_url('COGS/import/success'));
+    }
+
+    function input(){
+      $this->load->view('header');
+      $this->load->view('aside');
+      $this->load->view('cogs/input_target');
+      $this->load->view('footer');
+    }
+
+    function input_target(){
+      $area   = $this->input->post('area');
+      $bulan  = $this->input->post('bulan');
+      $target = $this->input->post('target');
+
+      $tahun  = date('Y');
+      $bultah = $bulan . $tahun;
+
+      //echo $area . " " . $bultah . " " . $target;
+
+      $data = array(
+          "area"    => $area,
+          "bultah"  => $bultah,
+          "target"  => $target
+      );
+
+      $insert   = $this->db->insert("data_target", $data);
+
+      if ($insert == TRUE) {
+        $this->input();
+      }
     }
 }

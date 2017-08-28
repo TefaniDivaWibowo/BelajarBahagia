@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "SearchSN";
+$route['default_controller'] = "Dashboard";
 $route['404_override'] = 'welcome/error_404';
 
 

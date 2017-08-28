@@ -36,6 +36,9 @@ class HrPerformance extends CI_Controller {
     public function importfile(){ //Import file
         $fileName = time() . $_FILES['fileImport']['name'];                     // Sesuai dengan nama Tag Input/Upload
 
+        $this->db->empty_table('data_hr');
+        $this->db->empty_table('data_hr_sec');
+
         $config['upload_path'] = './fileExcel/';                                // Buat folder dengan nama "fileExcel" di root folder
         $config['file_name'] = $fileName;
         $config['allowed_types'] = 'xls|xlsx|csv';
@@ -88,6 +91,8 @@ class HrPerformance extends CI_Controller {
             
             $insert = $this->db->insert("data_hr", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
             $insert = $this->db->insert("data_hr_sec", $data); 
+            $update = $this->db->query("UPDATE data_hr_sec SET status_naker = 'aktif' WHERE data_hr_sec.object_id IN (SELECT object_id FROM data_hr)");
+            $update1 = $this->db->query("UPDATE data_hr_sec SET status_naker = 'tidak aktif' WHERE data_hr_sec.object_id NOT IN (SELECT object_id FROM data_hr)");
             delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
         }
         
@@ -198,6 +203,48 @@ class HrPerformance extends CI_Controller {
             );
         $this->hr->update('data_hr_sec', $data, $where);
         redirect(base_url('index.php/HrPerformance/view_edit/' . $id),'refresh');
+    }
+
+    function input_kontrak_sm(){
+        $nik_sm     = $this->input->post('nik');
+
+        $data['data_sm']    = $this->hr->get_data_sm($nik_sm);
+        $data['nik']        = $nik_sm;
+
+        /*echo "<pre>";
+        print_r($data);
+        echo "</pre>";*/
+
+        $this->load->view('header');
+        $this->load->view('aside');
+        $this->load->view('hr/input_kontrak_sm', $data);
+        $this->load->view('footer');
+    }
+
+    function input_kontrak_tl(){
+         $nik_tl     = $this->input->post('nik');
+
+        $data['data_tl']    = $this->hr->get_data_sm($nik_tl);
+        $data['nik']        = $nik_tl;
+
+        $this->load->view('header');
+        $this->load->view('aside');
+        $this->load->view('hr/input_kontrak_tl', $data);
+        $this->load->view('footer');
+    }
+
+    function kontrak_management_sm(){
+        $this->load->view('header');
+        $this->load->view('aside');
+        $this->load->view('hr/kontrak_management_sm');
+        $this->load->view('footer');
+    }
+
+     function kontrak_management_tl(){
+        $this->load->view('header');
+        $this->load->view('aside');
+        $this->load->view('hr/kontrak_management_tl');
+        $this->load->view('footer');
     }
     
 }

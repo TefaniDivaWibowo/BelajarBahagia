@@ -247,7 +247,11 @@
                   foreach($fz2_ytd_rev as $key=>$value){
                     $totalrev   = $value->rev;
                     $negone     = -1;
-                    $finalrev   = $totalrev * $negone;
+                    if ($totalrev < 0) {
+                      $finalrev   = $totalrev * $negone;
+                    } else {
+                      $finalrev   = $totalrev;
+                    }
                     if($value->area == $fz2_ytd_cogs[$key]->area){
                       array_push($net,($finalrev-$fz2_ytd_cogs[$key]->cogs));
                     }
@@ -771,6 +775,158 @@ var chart = AmCharts.makeChart("chartdiv_allkla_line", {
 });
 </script>
 <!-- END -->
+
+<!--START TREND REVENUE ALL-->
+<?php
+  $monthNum   = date('m')-1;
+  $monthName  = date("F", mktime(0, 0, 0, $monthNum, 10));
+
+                    foreach ($trend_rev as $a) {
+                      $period  = $a['posting_period'];
+                      $total    = $a['total'];
+
+                      if ($total < 0) {
+                        $total = $total * -1;
+                      }
+
+                      $arrayperiode[]      = $period;
+                      $arraytotal[]       = $total;
+                    }
+?>
+
+    <script type="text/javascript">
+      AmCharts.makeChart("chartdiv_trend_rev_all",
+        {
+          "type": "serial",
+          "categoryField": "category",
+          "startDuration": 1,
+          "categoryAxis": {
+            "gridPosition": "start"
+          },
+          "trendLines": [],
+          "graphs": [
+            {
+              "balloonText": "[[title]] Periode [[category]]:[[value]]",
+              "bullet": "round",
+              "id": "AmGraph-1",
+              "type": "smoothedLine",
+              "title": "Total Pemasukkan",
+              "valueField": "column-1"
+            }
+          ],
+          "guides": [],
+          "valueAxes": [
+            {
+              "id": "ValueAxis-1",
+              "title": "Total Pemasukkan"
+            }
+          ],
+          "allLabels": [],
+          "balloon": {},
+          "legend": {
+            "enabled": true,
+            "useGraphSettings": true
+          },
+          "titles": [
+            {
+              "id": "Title-1",
+              "size": 15,
+              "text": "Evaluasi Revenue Fiber Zone 2"
+            }
+          ],
+          "dataProvider": [
+
+          <?php
+            foreach ($trend_rev as $key => $value) {
+          ?>
+              {
+                "category"   : <?=$arrayperiode[$key];?>,
+                "column-1"   : <?=$arraytotal[$key];?>
+              },
+          <?php
+            }
+          ?>
+          ]
+        }
+      );
+    </script>
+<!--END-->
+
+<!--START TREND REVENUE MONTH-->
+<?php
+  $monthNum   = date('m')-1;
+  $monthName  = date("F", mktime(0, 0, 0, $monthNum, 10));
+
+                    foreach ($trend_rev as $a) {
+                      $period  = $a['posting_period'];
+                      $total    = $a['total'];
+
+                      if ($total < 0) {
+                        $total = $total * -1;
+                      }
+
+                      $arrayperiode[]      = $period;
+                      $arraytotal[]       = $total;
+                    }
+?>
+
+    <script type="text/javascript">
+      AmCharts.makeChart("chartdiv_trend_rev_m",
+        {
+          "type": "serial",
+          "categoryField": "category",
+          "startDuration": 1,
+          "categoryAxis": {
+            "gridPosition": "start"
+          },
+          "trendLines": [],
+          "graphs": [
+            {
+              "balloonText": "[[title]] Periode [[category]]:[[value]]",
+              "bullet": "round",
+              "id": "AmGraph-1",
+              "type": "smoothedLine",
+              "title": "Total Pemasukkan",
+              "valueField": "column-1"
+            }
+          ],
+          "guides": [],
+          "valueAxes": [
+            {
+              "id": "ValueAxis-1",
+              "title": "Total Pemasukkan"
+            }
+          ],
+          "allLabels": [],
+          "balloon": {},
+          "legend": {
+            "enabled": true,
+            "useGraphSettings": true
+          },
+          "titles": [
+            {
+              "id": "Title-1",
+              "size": 15,
+              "text": "Evaluasi Revenue <?=$area;?>"
+            }
+          ],
+          "dataProvider": [
+
+          <?php
+            foreach ($trend_rev as $key => $value) {
+          ?>
+              {
+                "category"   : <?=$arrayperiode[$key];?>,
+                "column-1"   : <?=$arraytotal[$key];?>
+              },
+          <?php
+            }
+          ?>
+          ]
+        }
+      );
+    </script>
+<!--END-->
 
 <script type="text/javascript">
 /*var table; 

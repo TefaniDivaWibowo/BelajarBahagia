@@ -11,7 +11,7 @@
                 <div class="form-group">
 
                   <?php
-                    foreach ($cogs_per_klasifikasi as $a) {
+                    foreach ($trend_rev as $a) {
                       $area           = $a['area'];
                       $klasifikasi    = $a['klasifikasi'];
                     }
@@ -55,7 +55,7 @@
                           ?>
                         
                           <option value=''>Klasifikasi</option>
-                          <option value='ALKER,SALKER,KBM'>ALKER,SALKER,KBM</option>
+                          <option value='ALKER, SALKER, KBM'>ALKER, SALKER, KBM</option>
                           <option value='AMORTISASI'>AMORTISASI</option>
                           <option value='BBM'>BBM</option>
                           <option value='DEPRESIASI'>DEPRESIASI</option>
