@@ -80,17 +80,14 @@
 
   <!--START EVALUASI KLASIFIKASI ALL CHART LINE-->
   <style>
-<<<<<<< HEAD
     #chartdiv_allkla_line {
       width : 100%;
       height  : 500px;
-    }                 
-=======
+    }
   #chartdiv_evaluasi {
     width: 300%;
     height: 600px;
   }                                               
->>>>>>> e1b21b1407ecbd14f809671bc40db9278f5ff9e0
   </style>
   <!--END-->
 

@@ -119,15 +119,22 @@
     }    
       return $query->row()->total;
     }
+    
     //Untuk Kegiatan Controller Provisioning
     function data_ps($no){
       $cari = $this->db
-             ->query("SELECT * FROM data_psb WHERE nomor_speedy IN(".$no.")");
+             ->query("SELECT * FROM data_provisioning WHERE nd_inet IN(".$no.")");
       return $cari->result_array();
     }
 
+    function get_rek($no){
+      $cari = $this->db
+             ->query("SELECT * FROM data_provisioning WHERE nd_inet IN(".$no.")");
+      return $cari->result_array();
+    }
+ // AND ba_prov IS NOT NULL
     function get_all(){
-      $this->db->from('data_psb');
+      $this->db->from('data_provisioning');
       $query  = $this->db->get();
       return $query->num_rows();
     }
@@ -136,6 +143,65 @@
       $cari = $this->db
              ->query("SELECT sto, COUNT(sto) AS total FROM data_provisioning WHERE status_rekon = 'NOK' OR status_rekon = 'nok' GROUP BY sto ORDER BY sto");
       return $cari->result_array();
+    }
+
+    function get_all_prov(){
+      $query = $this->db
+                    ->select('*')
+                    ->from('data_provisioning')
+                    // ->limit(100)
+                    ->get();
+      return $query->result_array();
+    }
+    
+    public function update($no){
+        $this->db
+             ->query("UPDATE data_provisioning SET status_rekon = 'ok' WHERE nd_inet IN(".$no.")");
+    }
+
+    // Untuk dashboard Provisioning
+    function get_all_by_bulan($no){
+      $query = $this->db
+                    ->select('COUNT(sto) as jsto')
+                    ->from('data_provisioning')
+                    ->like('tgl_status', '-'.$no.'-')
+                    ->get();
+      return $query->row()->jsto;
+    }
+
+    function get_all_by_ba($no){
+      $query = $this->db
+                    ->select('COUNT(sto) as ba_sto')
+                    ->from('data_provisioning')
+                    ->where('ba_prov', NULL)
+                    ->like('tgl_status', '-'.$no.'-')
+                    ->get();
+      return $query->row()->ba_sto;
+    }
+
+    function get_all_sto($no){
+      $query = $this->db
+                    ->select('sto')
+                    ->select('COUNT(id_prov) as jum')
+                    ->from('data_provisioning')
+                    ->like('tgl_status', '-'.$no.'-')
+                    ->group_by('sto')
+                    ->order_by('sto', 'asc')
+                    ->get();
+      return $query->result_array();
+    }
+
+    function get_sto_ba($no){
+      $query = $this->db
+                    ->select('sto')
+                    ->select('COUNT(id_prov) as jum')
+                    ->from('data_provisioning')
+                    ->like('tgl_status', '-'.$no.'-')
+                    ->where('ba_prov', NULL)
+                    ->group_by('sto')
+                    ->order_by('sto', 'asc')
+                    ->get();
+      return $query->result_array();
     }
 
 }

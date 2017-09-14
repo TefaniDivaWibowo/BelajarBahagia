@@ -54,31 +54,30 @@
                   Jumlah semua data PS <?php echo $all; ?>
                 </td></tr> -->
                 <tr>
-                  <th>Bukti BA</th>
-                  <th>ID REV</th>
-                  <th>MDF</th>
-                  <th>Nomor Pots</th>
-                  <th>Nomor Speedy</th>
-                  <th>Nama Pelanggan</th>
-                  <th>Alamat</th>
-                  <th>ODP</th>
-                  <th>ONT</th>
-                  <th>STB</th>
-                  <th>Layanan</th>
-                  <th>Jenis Kabel</th>
-                  <th>Panjang Kabel</th>
-                  <th>Kelebihan Kabel</th>
-                  <th>Tiang</th>
-                  <th>Patch Cord</th>
-                  <th>Patch Cord Tambahan</th>
-                  <th>Kabel UTP</th>
-                  <th>Kabel UTP Tambahan</th>
-                  <th>Kabel PVC</th>
-                  <th>STB Tambahan</th>
-                  <th>Tanggal VA</th>
-                  <th>Tanggal PS</th>
-                  <th>Hasil Cek Redaman</th>
-                  <th>Biaya</th>
+                  <th>No</th>
+                  <th>ID ALPRO</th>
+                  <th>ND</th>
+                  <th>ND INET</th>
+                  <th>CITEM</th>
+                  <th>KECEPATAN</th>
+                  <th>STO</th>
+                  <th>SO</th>
+                  <th>STATUS INDIHOME</th>
+                  <th>TGL REG</th>
+                  <th>TGL STATUS</th>
+                  <th>UMUR BY TGL REG</th>
+                  <th>NAMA</th>
+                  <th>KCONTACT</th>
+                  <th>JALAN</th>
+                  <th>DISTRIK</th>
+                  <th>KOTA</th>
+                  <th>TIPE</th>
+                  <th>SUMBER</th>
+                  <th>PERIODE REKON</th>
+                  <th>JENIS</th>
+                  <th>STATUS REKON</th>
+                  <th>PETUGAS</th>
+                  <th>BERITA ACARA</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,35 +90,40 @@
 
                   ?>
                   <tr>
-                    <td><?= $p['id_rev'];?></td>
-                    <td><?= $p['mdf'];?></td>
-                    <td><?= $p['nomor_pots'];?></td>
-                    <td><?= $p['nomor_speedy'];?></td>
+                    <td><?= $no;?></td>
+                    <td><?= $p['id_alpro'];?></td>
+                    <td><?= $p['nd'];?></td>
+                    <td><?= $p['nd_inet'];?></td>
+                    <td><?= $p['citem'];?></td>
+                    <td><?= $p['kecepatan'];?></td>
+                    <td><?= $p['sto'];?></td>
+                    <td><?= $p['so'];?></td>
+                    <td><?= $p['status_indihome'];?></td>
+                    <td><?= $p['tgl_reg'];?></td>
+                    <td><?= $p['tgl_status'];?></td>
+                    <td><?= $p['umur_by_tgl_reg'];?></td>
                     <td><?= $p['nama'];?></td>
-                    <td><?= $p['alamat'];?></td>
-                    <td><?= $p['odp'];?></td>
-                    <td><?= $p['ont'];?></td>
-                    <td><?= $p['stb'];?></td>
-                    <td><?= $p['layanan'];?></td>
-                    <td><?= $p['jenis_kabel'];?></td>
-                    <td><?= $p['panjang_kabel'];?></td>
-                    <td><?= $p['kelebihan_kabel'];?></td>
-                    <td><?= $p['tiang'];?></td>
-                    <td><?= $p['patch_cord'];?></td>
-                    <td><?= $p['patch_cord_add'];?></td>
-                    <td><?= $p['kabel_utp'];?></td>
-                    <td><?= $p['kabel_utp_add'];?></td>
-                    <td><?= $p['kabel_pvc'];?></td>
-                    <td><?= $p['stb_kedua'];?></td>
-                    <td><?= $p['tgl_va'];?></td>
-                    <td><?= $p['tgl_ps'];?></td>
-                    <td><?= $p['hasil_cek_redaman'];?></td>
-                    <td><?= $p['biaya'];?></td>
+                    <td><?= $p['kcontact'];?></td>
+                    <td><?= $p['jalan'];?></td>
+                    <td><?= $p['distrik'];?></td>
+                    <td><?= $p['kota'];?></td>
+                    <td><?= $p['tipe'];?></td>
+                    <td><?= $p['sumber'];?></td>
+                    <td><?= $p['periode_rekon'];?></td>
+                    <td><?= $p['jenis'];?></td>
+                    <td><?= $p['status_rekon'];?></td>
+                    <td><?= $p['petugas'];?></td>
+                    <?php
+                      if($p['ba_prov'] != NULL ){?>
+                        <td><a href="base_url();../../../../uploads/<?= $p['ba_prov'];?>"><?= $p['ba_prov'];?></a></td>                        
+                        <?php } else{?>
+
+                    <td><a href="<?php echo base_url()."index.php/Revenue/upload_ba/" . $p['id_prov'] ."";?>">Upload BA</a></td>
+                        <?php }
+                    ?>
                   </tr>
                   <?php
                   }
-                    $jumlah = COUNT($array);
-                    $hasil = $jumlah/$all*100;
                 ?>
               </tbody>
             </table>
