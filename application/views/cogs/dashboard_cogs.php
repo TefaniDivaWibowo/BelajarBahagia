@@ -67,10 +67,15 @@
           <div class="box">
             <div id="chartdiv_dashboardcogs"></div>  
           </div>
+
+          <?php
+            $monthNum   = date('m')-1;
+            $monthName  = date("F", mktime(0, 0, 0, $monthNum, 10));
+          ?>
           
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">COGS FIBER ZONE JATIM II YTD <?= date("F Y")?></h3>
+              <h3 class="box-title">COGS FIBER ZONE JATIM II YTD <?= $monthName;?></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -111,8 +116,12 @@
                   foreach($fz2_ytd_rev as $key=>$value){
                     
                     $totalrev   = $value->rev;
-                    $negone   = -1;
-                    $finalrev   = $totalrev * $negone;
+                    $negone     = -1;
+                    if ($totalrev < 0) {
+                      $finalrev   = $totalrev * $negone;
+                    } else {
+                      $finalrev   = $totalrev;
+                    }
                     if($value->area == $fz2_ytd_cogs[$key]->area){
                       array_push($net,($finalrev-$fz2_ytd_cogs[$key]->cogs));
                     }

@@ -58,12 +58,19 @@
             <h3 class="box-title">Import File</h3>
           </div>
           <div class="box-body">
-            <form action="<?=base_url('index.php/HrPerformance/importfile')?>" method="post" enctype="multipart/form-data">
-                <input type="file" name="fileUpload" id="fileUpload">
+            <form action="<?=base_url('index.php/COGS/importfile')?>" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileImport" id="fileImport" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                <?php
+                  if ($_alert != NULL) {
+                    echo "<h3 class='box-title' style='color: green;'>".$_alert."</h3>";
+                  } else {
+                    echo " ";
+                  }
+                ?>
                 <hr>
                 <div class="file-upload">
                   <label for="upload" class="btn btn-primary btn-block">Upload</label>
-                  <input id="upload" class="btn file-upload__input btn-block" type="submit" >
+                  <input id="upload" class="btn file-upload__input btn-block" type="submit" name="btnSubmit" value="Upload">
             </div>
             </form>
           </div>

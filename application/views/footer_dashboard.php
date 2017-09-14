@@ -258,5 +258,166 @@ $(document).ready(function() {
 } );
 </script>
 
+
+<!-- START DASHBOARD COGS-->
+              <?php
+                  foreach ($target as $b) {
+                    $number   = $b['target'];
+                    $onesix   = 1000000;
+                    $semfin   = $number * $onesix;
+                    $final    = number_format($semfin,2,",",".");
+                    $arraytar[]   = $semfin;
+                  }
+
+                  $net  = [];
+                  foreach($fz2_ytd_rev as $key=>$value){
+                    $totalrev   = $value->rev;
+                    $negone     = -1;
+                    if ($totalrev < 0) {
+                      $finalrev   = $totalrev * $negone;
+                    } else {
+                      $finalrev   = $totalrev;
+                    }
+                    if($value->area == $fz2_ytd_cogs[$key]->area){
+                      array_push($net,($finalrev-$fz2_ytd_cogs[$key]->cogs));
+                    }
+                    $cogs       = $fz2_ytd_cogs[$key]->cogs;
+                    $arraycog[] = $cogs;
+                    $arrayrev[] = $finalrev;
+                    $arraynet[] = $net[$key];
+                  }
+
+            ?>
+<script>
+
+          <?php
+            $monthNum   = date('m')-1;
+            $monthName  = date("F", mktime(0, 0, 0, $monthNum, 10));
+          ?>
+
+$( document ).ready(function() {
+  var chart = AmCharts.makeChart( "chartdiv_dashboardcogs", {
+  "type": "serial",
+  "addClassNames": true,
+  "theme": "light",
+  "autoMargins": false,
+  "marginLeft": 120,
+  "marginRight": 5,
+  "marginTop": 50,
+  "marginBottom": 26,
+  "balloon": {
+    "adjustBorderColor": false,
+    "horizontalPadding": 10,
+    "verticalPadding": 8,
+    "color": "#ffffff"
+  },
+  "legend": {
+    "horizontalGap": 10,
+    "useGraphSettings": true,
+    "markerSize": 10
+  },
+  "titles": [
+    {
+      "id": "Title-1",
+      "size": 15,
+      "text": "COGS FIBER ZONE JATIM II YTD <?= $monthName . " " . date('Y');?>"
+    }
+  ],
+  "dataProvider": [ {
+    "area": "Jember",
+    "cogs": <?=$arraycog[0];?>,
+    "revenue": <?=$arrayrev[0];?>,
+    "income": <?=$arraynet[0];?>,
+    "target": <?=$arraytar[0];?>
+  }, {
+    "area": "Kediri",
+    "cogs": <?=$arraycog[1];?>,
+    "revenue": <?=$arrayrev[1];?>,
+    "income": <?=$arraynet[1];?>,
+    "target": <?=$arraytar[1];?>
+  }, {
+    "area": "Madiun",
+    "cogs": <?=$arraycog[2];?>,
+    "revenue": <?=$arrayrev[2];?>,
+    "income": <?=$arraynet[2];?>,
+    "target": <?=$arraytar[2];?>
+  }, {
+    "area": "Malang",
+    "cogs": <?=$arraycog[3];?>,
+    "revenue": <?=$arrayrev[3];?>,
+    "income": <?=$arraynet[3];?>,
+    "target": <?=$arraytar[3];?>
+  }, {
+    "area": "Pasuruan",
+    "cogs": <?=$arraycog[4];?>,
+    "revenue": <?=$arrayrev[4];?>,
+    "income": <?=$arraynet[4];?>,
+    "target": <?=$arraytar[4];?>
+  } ],
+  "valueAxes": [ {
+    "axisAlpha": 0,
+    "position": "left"
+  } ],
+  "startDuration": 1,
+  "graphs": [ {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "COGS",
+    "type": "column",
+    "valueField": "cogs",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Revenue",
+    "type": "column",
+    "valueField": "revenue",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Net Income",
+    "type": "column",
+    "valueField": "income",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "id": "graph2",
+    "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "title": "Target",
+    "valueField": "target",
+    "dashLengthField": "dashLengthLine"
+  } ],
+  "depth3D": 20,
+  "angle": 30,
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+  "categoryField": "area",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "axisAlpha": 0,
+    "tickLength": 0
+  },
+  "export": {
+    "enabled": true
+  }
+} );
+});
+</script>
+
 </body>
 </html>

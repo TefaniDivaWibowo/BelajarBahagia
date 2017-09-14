@@ -26,7 +26,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="#">
+          <a href="<?= base_url('index.php/Dashboard')?>">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
@@ -129,10 +129,21 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span></a>
               <ul class="treeview-menu">
-                <li><a href="<?= base_url('index.php/Revenue/data_psb')?>"><i class="fa fa-circle-o"></i> Data Provisioning
-                  </a></li>
-                <li><a href="<?= base_url('index.php/Revenue/form_psb')?>"><i class="fa fa-circle-o"></i> Form Provisioning</a></li>
-                <li><a href="<?= base_url('index.php/RevTarget/target_psb')?>"><i class="fa fa-circle-o"></i> Update Target Rev</a></li>
+                <li><a href="<?= base_url('index.php/Revenue/prov/data_prov')?>"><i class="fa fa-circle-o"></i> Data Provisioning</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Import Data PSB</a></li> —>
+                <li>
+                      <a href="#"><i class="fa fa-circle-o"></i> Search
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="<?= base_url('index.php/SearchRev/cari_by_date')?>"><i class="fa fa-circle-o"></i> All Data by Date</a></li>
+                        <li><a href="<?= base_url('index.php/SearchRev/cari_by_div')?>"><i class="fa fa-circle-o"></i> All Data by Division</a></li>
+                        <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search BA</a></li>
+                        <li><a href="<?= base_url('index.php/SearchRev/cari_ba')?>"><i class="fa fa-circle-o"></i> Search Data PS</a></li>
+                      </ul>
+                </li>
               </ul>
             </li>
             <li>
@@ -200,8 +211,9 @@
                 <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi_all')?>"><i class="fa fa-circle-o"></i> COGS per Pengeluaran</a></li>
               </ul>
             </li>
+            <li><a href="<?=base_url('index.php/COGS/rev');?>"><i class="fa fa-circle-o"></i> Evaluasi Revenue</a></li>
             <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Import Data COGS</a></li>
-            <li><a href="<?=base_url('index.php/COGS/import');?>"><i class="fa fa-circle-o"></i> Input Target</a></li>
+            <li><a href="<?=base_url('index.php/COGS/input');?>"><i class="fa fa-circle-o"></i> Input Target COGS</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -221,11 +233,22 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?=base_url('index.php/COGS/evaluasi');?>"><i class="fa fa-circle-o"></i> Import Data HR</a></li>
-                <li><a href="<?=base_url('index.php/COGS/cogs_klasifikasi')?>"><i class="fa fa-circle-o"></i> Import Data PBS</a></li>
+                <li><a href="<?=base_url('index.php/HrPerformance/import');?>"><i class="fa fa-circle-o"></i> Import Data HR</a></li>
+                <li><a href="<?=base_url('index.php/HrPerformance')?>"><i class="fa fa-circle-o"></i> Import Data PBS</a></li>
               </ul>
             </li>
-            <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> Kontrak Management</a></li>
+            <li class="treeview">
+              <a href="">
+                <i class="fa fa-circle-o"></i> <span>Kontrak Management</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url('index.php/HrPerformance/input_kontrak_sm');?>"><i class="fa fa-circle-o"></i> Site Manager</a></li>
+                <li><a href="<?=base_url('index.php/HrPerformance/input_kontrak_tl')?>"><i class="fa fa-circle-o"></i> Team Leader</a></li>
+              </ul>
+            </li>
             <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> List Data HR</a></li>
             <li><a href="<?=base_url('index.php/HrPerformance/')?>"><i class="fa fa-circle-o"></i> Mapping SM to TL</a></li>
             <li class="treeview">

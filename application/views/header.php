@@ -82,12 +82,35 @@
   <style>
     #chartdiv_allkla_line {
       width : 100%;
+<<<<<<< HEAD
       height  : 500px;
     }
   #chartdiv_evaluasi {
     width: 300%;
     height: 600px;
   }                                               
+=======
+      height  : 550px;
+    }                
+  </style>
+  <!--END-->
+
+  <!--START REVENUE ALL-->
+  <style>
+  #chartdiv_trend_rev_all {
+    width   : 100%;
+    height  : 600px;
+  }         
+  </style>
+  <!--END-->
+
+  <!--START REVENUE MONTH-->
+  <style>
+  #chartdiv_trend_rev_m {
+    width   : 100%;
+    height  : 600px;
+  }         
+>>>>>>> a981d298ad0ca688e2ca9ee771a84e0bf67f9767
   </style>
   <!--END-->
 

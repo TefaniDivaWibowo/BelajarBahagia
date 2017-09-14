@@ -90,6 +90,24 @@
       return $query->result_array();
     }
 
+    function get_data_sm($where){
+      $query  = $this->db
+                ->select('*')
+                ->from('data_hr_sec')
+                ->where('nik', $where)
+                ->get();
+      return $query->result_array();
+    }
+
+    function get_data_tl($where){
+      $query  = $this->db
+                ->select('*')
+                ->from('data_hr_sec')
+                ->where('nik', $where)
+                ->get();
+      return $query->result_array();
+    }
+
     // Fungsi Update for All
     function update($table, $data, $where){
       $this->db->update($table, $data, $where);

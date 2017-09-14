@@ -1,3 +1,7 @@
+<?php
+  error_reporting(0);
+?>
+
 <!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -58,13 +62,6 @@
                               }
                             }
                           ?>
-
-                          <!-- = ($bulan != null)?'<option selected="selected" value="'.$bulan["id"].'">'.$bulan["nama"].'</option>' : '<option selected="selected" value="ytd">Year to Date</option>' -->
-                          
-                            <!-- <option selected="selected" value="ytd">Year to Date</option> -->
-                            <?php
-                            
-                            //date("F Y");
                             ?>
                         </select>
                       </div>

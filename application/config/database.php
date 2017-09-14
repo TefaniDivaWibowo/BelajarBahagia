@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'postgres';
-$db['default']['password'] = 'inti';
+$db['default']['password'] = 'tefani1204';
 $db['default']['database'] = 'data_project';
 $db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
