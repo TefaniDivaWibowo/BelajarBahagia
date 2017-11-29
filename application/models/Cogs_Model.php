@@ -49,25 +49,31 @@
     }
     
     function get_fz2_ytd_cogs(){
-      $query = $this->db
+      $query = $this->db->query("SELECT area, SUM(amount_in_doc_curr) as cogs FROM data_cogs WHERE group_tipe = 'COGS' AND posting_period IS NOT NULL GROUP BY area ORDER BY area ASC");
+      return $query->result();
+
+      /*$query = $this->db
                     ->select('area, SUM(amount_in_doc_curr) as cogs')
                     ->from('data_cogs')
                     ->where('group_tipe', 'COGS')
                     ->group_by('area')
                     ->order_by('area', 'asc')
                     ->get();
-      return $query->result();
+      return $query->result();*/
     }
 
     function get_fz2_ytd_rev(){
-      $query = $this->db
+      $query = $this->db->query("SELECT area, SUM(amount_in_doc_curr) as rev FROM data_cogs WHERE group_tipe = 'Pendapatan' AND posting_period IS NOT NULL GROUP BY area ORDER BY area ASC");
+      return $query->result();
+      /*$query = $this->db
                     ->select('area, SUM(amount_in_doc_curr) as rev')
                     ->from('data_cogs')
                     ->where('group_tipe', 'Pendapatan')
+                    ->where('posting_period', NOT NULL)
                     ->group_by('area')
                     ->order_by('area', 'asc')
                     ->get();
-      return $query->result();
+      return $query->result();*/
     }
 
     function cogs_klas_all(){
@@ -167,6 +173,7 @@
       $bulan    = date('m', strtotime('-1 month'));;
       $tahun    = date('Y');
       $bultah   = $bulan . $tahun;
+      /*$bultah   = "072017";*/
       //date('mY');
       $query    = $this->db->query("SELECT area, SUM(target) as target FROM data_target WHERE bultah BETWEEN '$bultah1' AND '$bultah' GROUP BY area ORDER BY area");
       return $query->result_array();

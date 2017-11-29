@@ -255,10 +255,17 @@
                     if($value->area == $fz2_ytd_cogs[$key]->area){
                       array_push($net,($finalrev-$fz2_ytd_cogs[$key]->cogs));
                     }
+
+                    $net_ambil  = $net[$key];
+
+                      if ($net_ambil < 0) {
+                        $net_ambil   = $net_ambil * $negone;
+                      } 
+
                     $cogs       = $fz2_ytd_cogs[$key]->cogs;
                     $arraycog[] = $cogs;
                     $arrayrev[] = $finalrev;
-                    $arraynet[] = $net[$key];
+                    $arraynet[] = $net_ambil;
                   }
 
             ?>
@@ -416,6 +423,14 @@ $( document ).ready(function() {
     "outlineAlpha": 0,
     "depth3D": 15,
     "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[jumlah]]</b></span>",
+    "legend": {
+    "enabled": true,
+    "align": "center",
+    "markerType": "circle",
+    "spacing": 0,
+    "valueText": "",
+    "verticalGap": 0
+    },
     "marginTop":0,
     "marginBottom":0,
     "angle": 30,
@@ -465,6 +480,14 @@ var chart = AmCharts.makeChart( "chartdiv_evaluasi_area", {
   "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[totalarea]]</b></span>",
   "marginTop":0,
   "marginBottom":0,
+  "legend": {
+    "enabled": true,
+    "align": "center",
+    "markerType": "circle",
+    "spacing": 0,
+    "valueText": "",
+    "verticalGap": 0
+    },
   "angle": 30,
   "labelRadius": 0.5,
   "export": {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2d4c21b6-c4ce-4039-a2f1-307a1c98c404" name="pckantor" url="http://10.112.83.83">
+        <fileTransfer host="10.112.83.83" port="21" rootFolder="/var/www/html/BelajarBahagia">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

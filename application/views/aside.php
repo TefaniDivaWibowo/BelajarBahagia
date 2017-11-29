@@ -26,6 +26,21 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> 
+            <span>Rekon PSB</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+           <ul class="treeview-menu">
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload 3P MS2N</a></li>
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload 2P MS2N</a></li>
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload Starclick</a></li>
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Data Rekon</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
           <a href="<?= base_url('index.php/Dashboard')?>">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>

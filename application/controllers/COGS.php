@@ -22,7 +22,7 @@ class COGS extends CI_Controller {
       $data['target']                 = $this->Cogs_Model->cogs_target();
 
       //Data COGS Per Klasifikasi
-      $data['cogs_klasifikasi']    = $this->Cogs_Model->cogs_klas();
+      $data['cogs_klasifikasi']       = $this->Cogs_Model->cogs_klas();
 
       /*echo "<pre>";
       print_r($data['fz2_ytd_cogs']);
@@ -430,7 +430,7 @@ class COGS extends CI_Controller {
             );
             
             $insert = $this->db->insert("data_cogs", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
-            delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
+            //delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
         }
         
         redirect(base_url('COGS/import/success'));

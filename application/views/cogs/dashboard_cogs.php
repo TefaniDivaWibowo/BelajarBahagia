@@ -128,7 +128,14 @@
                       $cogs     = $fz2_ytd_cogs[$key]->cogs;
                       $fcogs    = number_format($cogs,2,",",".");
                       $frev     = number_format($finalrev,2,",",".");
-                      $netin    = number_format($net[$key],2,",",".");
+
+                      $net_ambil  = $net[$key];
+
+                      if ($net_ambil < 0) {
+                        $net_ambil   = $net_ambil * $negone;
+                      } 
+
+                      $netin    = number_format($net_ambil,2,",",".");
 
                       echo "<tr>
                             <td>";
@@ -160,7 +167,7 @@
 
                       $cfz2  += $cogs;
                       $rfz2  += $finalrev;
-                      $ifz2  += $net[$key];
+                      $ifz2  += $net_ambil;
                       $tfz2  += $array2[$i];
 
                       $i++;
