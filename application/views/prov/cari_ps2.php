@@ -1,9 +1,12 @@
+ <?php
+  error_reporting(0);
+ ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Provisioning
+        Search for Data BA
       </h1>
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -15,15 +18,41 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
+        <!-- right column -->
+        <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pencarian Presentase Data PS Dilengkasi BA</h3>
+            </div>
+            <div class="form-horizontal">
+            <form method="post" action="<?php echo base_url()."index.php/prov/hasil_ps";?>">
+              <div class="box-body">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Nomor Internet</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" type="textarea" placeholder="Ketikkan beberapa nomor internet untuk pencarian" name="no_inet" required></textarea>
+                  </div>
+                </div>
+
+              <div class="box-footer" align="center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+          </form>
+
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-            </div>
-            <!-- /.box-header -->
+            <!-- <div class="box-header">
+              <h3 class="box-title"> Result Table</h3>
+            </div> -->
             <div class="box-body">
             <div style="overflow-x:auto;">
               <table id="example" class="display" width="100%" cellspacing="0" class="table table-bordered table-hover" >
                 <thead>
+                <!-- <tr><td colspan="5">
+                  Jumlah semua data PS <?php echo $all; ?>
+                </td></tr> -->
                 <tr>
                   <th>No</th>
                   <th>ID ALPRO</th>
@@ -55,7 +84,8 @@
 
                 <?php
                   $no = 0;
-                      foreach($psb as $p){
+                      foreach($cari as $p){
+                        $array[] = $b['id_rev'];
                         $no++;
 
                   ?>
@@ -95,20 +125,16 @@
                   <?php
                   }
                 ?>
-
               </tbody>
             </table>
             </div>
+            <br>
+
+            <!-- <h3>Presentase Kelengkapan BA Instalasi <?= ROUND($hasil, 2);?>%</h3> -->
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
 
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->

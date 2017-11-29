@@ -42,7 +42,7 @@
                   <th width="30%">&nbsp</th>
                 </tr>
                 <tr>
-                  <th style=" text-align:center;">TARGET</th>
+                  <th style="text-align:center;">TARGET</th>
                   <th rowspan="2" style="background-color:#7f8c8d; color:#fff; vertical-align:middle">(Nilai Rev)</th>
                   <th rowspan="2" style="background-color:#f1c40f; color:#fff; vertical-align:middle">Infrastructure Delivery</th>
                   <th>>></th>
