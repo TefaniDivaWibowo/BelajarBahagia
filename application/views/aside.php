@@ -34,10 +34,11 @@
             </span>
           </a>
            <ul class="treeview-menu">
-            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload 3P MS2N</a></li>
-            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload 2P MS2N</a></li>
-            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload Starclick</a></li>
-            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Data Rekon</a></li>
+            <li><a href="<?= base_url('index.php/rekon/show_data')?>"><i class="fa fa-circle-o"></i> Data Rekon</a></li>
+            <li><a href="<?= base_url('index.php/rekon/import2pms2n')?>"><i class="fa fa-circle-o"></i> Upload 2P MS2N</a></li>
+            <li><a href="<?= base_url('index.php/rekon/import3pms2n')?>"><i class="fa fa-circle-o"></i> Upload 3P MS2N</a></li>
+            <li><a href="<?= base_url('index.php/Revenue')?>"><i class="fa fa-circle-o"></i> Upload Rekon SO</a></li>
+            <li><a href="<?= base_url('index.php/rekon/importsc')?>"><i class="fa fa-circle-o"></i> Upload Starclick</a></li>
           </ul>
         </li>
         <li class="treeview">

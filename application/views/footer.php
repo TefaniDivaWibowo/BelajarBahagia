@@ -258,5 +258,13 @@ $(document).ready(function() {
 } );
 </script>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#datarekon').DataTable( {
+        "scrollX": true
+    } );
+} );
+</script>
+
 </body>
 </html>

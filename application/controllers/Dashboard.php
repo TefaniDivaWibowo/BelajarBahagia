@@ -7,23 +7,23 @@ class Dashboard extends CI_Controller {
       $this->load->database();
       $this->load->helper('url');
       $this->load->library('PHPExcel');
-      $this->load->model('Cogs_Model');
+      $this->load->model('cogs_model');
       $this->load->library('session');
     }
 
     public function index() {
 
       //Data COGS per Area for Dashboard
-      $data['fz2_ytd_cogs']           = $this->Cogs_Model->get_fz2_ytd_cogs();
+      $data['fz2_ytd_cogs']           = $this->cogs_model->get_fz2_ytd_cogs();
 
       //Data REV per Area for Dashboard
-      $data['fz2_ytd_rev']            = $this->Cogs_Model->get_fz2_ytd_rev();
+      $data['fz2_ytd_rev']            = $this->cogs_model->get_fz2_ytd_rev();
 
       //Data Target for Dashboard
-      $data['target']                 = $this->Cogs_Model->cogs_target();
+      $data['target']                 = $this->cogs_model->cogs_target();
 
       //Data COGS Per Klasifikasi
-      $data['cogs_klasifikasi']    = $this->Cogs_Model->cogs_klas();
+      $data['cogs_klasifikasi']    = $this->cogs_model->cogs_klas();
 
       /*echo "<pre>";
       print_r($data['fz2_ytd_cogs']);

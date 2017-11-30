@@ -36,7 +36,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?=base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Data tables -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
   <!-- Select 2 -->
   <link rel="stylesheet" href="<?=base_url();?>assets/plugins/select2/select2.min.css">
 
@@ -82,16 +82,12 @@
   <style>
     #chartdiv_allkla_line {
       width : 100%;
-<<<<<<< HEAD
       height  : 500px;
     }
   #chartdiv_evaluasi {
     width: 300%;
     height: 600px;
-  }                                               
-=======
-      height  : 550px;
-    }                
+  }              
   </style>
   <!--END-->
 
@@ -110,9 +106,15 @@
     width   : 100%;
     height  : 600px;
   }         
->>>>>>> a981d298ad0ca688e2ca9ee771a84e0bf67f9767
   </style>
   <!--END-->
+
+  <style>
+    div.dataTables_wrapper {
+          width: auto;
+          margin: 0 auto;
+    }
+  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
