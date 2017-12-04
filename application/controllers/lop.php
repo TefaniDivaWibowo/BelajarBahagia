@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rekon extends CI_Controller {
+class LOP extends CI_Controller {
 	function __construct() {
       parent::__construct();
       $this->load->database();
       $this->load->helper('url');
       $this->load->library('PHPExcel');
-      $this->load->model('modelrekon');
+      $this->load->model('modellop');
       $this->load->library('session');
     }
 
-    public function import3pms2n(){ //All data use Data HR Sec 
+    public function importlop(){ //All data use Data HR Sec 
       $msg    = $this->uri->segment(3);
           $alert  = '';
           if($msg == 'success'){
@@ -21,167 +21,11 @@ class Rekon extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('aside');
-      $this->load->view('rekon/import3pms2n', $data);
+      $this->load->view('lop/importfilelop', $data);
       $this->load->view('footer');
     }
 
-    public function importfile3pms2n(){ //Import file
-        $fileName = time() . $_FILES['fileImport']['name'];                     // Sesuai dengan nama Tag Input/Upload
-
-        $config['upload_path'] = './fileExcel/';                                // Buat folder dengan nama "fileExcel" di root folder
-        $config['file_name'] = $fileName;
-        $config['allowed_types'] = 'xls|xlsx|csv';
-        $config['max_size'] = 10000;
-
-        $this->load->library('upload');
-        $this->upload->initialize($config);
-
-        //$this->db->empty_table("data_cogs"); 
-
-        if (!$this->upload->do_upload('fileImport'))
-            $this->upload->display_errors();
-
-        $media = $this->upload->data('fileImport');
-        $inputFileName = './fileExcel/' . $media['file_name'];
-
-        try {
-            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-            $objPHPExcel = $objReader->load($inputFileName);
-        } catch (Exception $e) {
-            die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' . $e->getMessage());
-        }
-
-        $sheet = $objPHPExcel->getSheet(0);
-        $highestRow = $sheet->getHighestRow();
-        $highestColumn = $sheet->getHighestColumn();
-
-        for ($row = 2; $row <= $highestRow; $row++) {                           // Read a row of data into an array                 
-            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
-            
-            $data = array(       
-                "mdf"               => $rowData[0][12],
-                "nomor_pots"        => $rowData[0][8],
-                "nomor_speedy"		  => $rowData[0][9],
-                "nama"				      => $rowData[0][19],
-                "alamat"			      => $rowData[0][21],
-            );
-
-            $mdf          = $rowData[0][12];
-            $nomor_pots   = $rowData[0][8];
-            $nomor_speedy = $rowData[0][9];
-            $nama         = $rowData[0][19];
-            $alamat       = $rowData[0][21];
-            $sumber_order = "ms2n";
-
-            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
-              mdf         = excluded.mdf, 
-              nomor_pots  = excluded.nomor_pots, 
-              nama        = excluded.nama,  
-              alamat      = excluded.alamat,
-              sumber_order= excluded.sumber_order';
-
-            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order));
-            
-            //$insert = $this->db->insert("data_rekon", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
-            //delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
-        }
-        
-        redirect(base_url('rekon/import3pms2n/success'));
-    }
-
-    public function import2pms2n(){ //All data use Data HR Sec 
-      $msg    = $this->uri->segment(3);
-          $alert  = '';
-          if($msg == 'success'){
-              $alert  = 'Success!!';
-          }
-          $data['_alert'] = $alert;
-
-      $this->load->view('header');
-      $this->load->view('aside');
-      $this->load->view('rekon/import2pms2n', $data);
-      $this->load->view('footer');
-    }
-
-    public function importfile2pms2n(){ //Import file
-        $fileName = time() . $_FILES['fileImport']['name'];                     // Sesuai dengan nama Tag Input/Upload
-
-        $config['upload_path'] = './fileExcel/';                                // Buat folder dengan nama "fileExcel" di root folder
-        $config['file_name'] = $fileName;
-        $config['allowed_types'] = 'xls|xlsx|csv';
-        $config['max_size'] = 10000;
-
-        $this->load->library('upload');
-        $this->upload->initialize($config);
-
-        //$this->db->empty_table("data_cogs"); 
-
-        if (!$this->upload->do_upload('fileImport'))
-            $this->upload->display_errors();
-
-        $media = $this->upload->data('fileImport');
-        $inputFileName = './fileExcel/' . $media['file_name'];
-
-        try {
-            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-            $objPHPExcel = $objReader->load($inputFileName);
-        } catch (Exception $e) {
-            die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' . $e->getMessage());
-        }
-
-        $sheet = $objPHPExcel->getSheet(0);
-        $highestRow = $sheet->getHighestRow();
-        $highestColumn = $sheet->getHighestColumn();
-
-        for ($row = 2; $row <= $highestRow; $row++) {                           // Read a row of data into an array                 
-            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
-            
-            $data = array(       
-                "mdf"               => $rowData[0][15],
-                "nomor_pots"        => $rowData[0][12],
-                "nomor_speedy"		  => $rowData[0][13],
-                "nama"				      => $rowData[0][21],
-                "alamat"			      => $rowData[0][23],
-            );
-
-            $mdf          = $rowData[0][15];
-            $nomor_pots   = $rowData[0][12];
-            $nomor_speedy = $rowData[0][13];
-            $nama         = $rowData[0][21];
-            $alamat       = $rowData[0][23];
-            $sumber_order = "ms2n";
-
-            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
-                  mdf            = excluded.mdf, 
-                  nomor_pots     = excluded.nomor_pots, 
-                  nama           = excluded.nama,  
-                  alamat         = excluded.alamat,
-                  sumber_order   = excluded.sumber_order';
-
-            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order));
-
-        }
-        
-        redirect(base_url('rekon/import2pms2n/success'));
-    }
-
-    public function importsc(){ //All data use Data HR Sec 
-      $msg    = $this->uri->segment(3);
-          $alert  = '';
-          if($msg == 'success'){
-              $alert  = 'Success!!';
-          }
-          $data['_alert'] = $alert;
-
-      $this->load->view('header');
-      $this->load->view('aside');
-      $this->load->view('rekon/importsc', $data);
-      $this->load->view('footer');
-    }
-
-    public function importfilesc(){ //Import file
+    public function importfilelop(){ //Import file
         $fileName = time() . $_FILES['fileImport']['name'];                     // Sesuai dengan nama Tag Input/Upload
 
         $config['upload_path'] = './fileExcel/';                                // Buat folder dengan nama "fileExcel" di root folder
@@ -384,54 +228,4 @@ class Rekon extends CI_Controller {
       $this->load->view('footer');
     }
 }
-
-//echo $nomor_speedy . " ";
-
-            /*$datanomor    = array();
-            array_push($datanomor, "$nomor_speedy");
-            //print_r($datanomor);
-
-            foreach($datanomor as $value){
-              $cek        = $this->modelrekon->getselectdata('data_rekon', $value);
-            }
-
-            print_r($cek);*/
-
-            /*$query = "INSERT INTO data_rekon VALUES ('".$mdf."', '', '".$nomor_pots."', '".$nomor_speedy."', '".$nama."', '".$alamat."', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '') ON DUPLICATE KEY UPDATE mdf = '" .$mdf."', nomor_pots = '".$nomor_pots."', nama = '".$nama."', alamat = '".$alamat."'";
-
-            $this->db->query($query);*/
-
-            /*$data_cek = array(
-              "nomor_speedy"        => $rowData[0][13]
-            );*/
-
-            /*$nomor['nomor_speedy']   = $rowData[0][13];
-            //echo $nomor_speedy . " ";
-            
-            $totalnomor     = count($nomor_speedy);
-            //echo $totalnomor;
-            
-            foreach ($nomor_speedy as $no) {
-              $cek          = $this->modelrekon->getselectdata('data_rekon', $no);
-            }
-
-            var_dump($cek);*/
-            //$data('base')   = $this->modelrekon->getnospeedy('data_rekon');
-
-            /*foreach ($base as $s) {
-              $nomor_speedy   = $s['nomor_speedy'];
-            }*/
-
-            //kurang lebih koyok ngene see
-            //cek dulu yep wkwkwk
-            /*if (count($cek) == NULL) {
-              //$update   = $this->db->update("data_rekon", $data);
-              $insert = $this->db->insert("data_rekon", $data);                  // Sesuaikan nama dengan nama tabel untuk melakukan insert data
-            } else {
-              $update = $this->db->set($data_update)
-                                ->where($data_cek)
-                                ->update('data_rekon'); 
-            }*/
-
-            //delete_files($media['file_path']);                                 // menghapus semua file .xls yang diupload
 ?>
