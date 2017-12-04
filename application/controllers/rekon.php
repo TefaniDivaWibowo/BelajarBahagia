@@ -383,6 +383,36 @@ class Rekon extends CI_Controller {
       $this->load->view('rekon/upload_ba', $data);
       $this->load->view('footer');
     }
+
+    public function uploadfileba(){
+      $fileba = $_FILES['ba_psb']['name'];
+          if($fileba == ""){
+            $fileba = NULL;
+          }else{
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'pdf|jpg|png|doc|docx';
+            $this->load->library('upload', $config);   
+              if (!$this->upload->do_upload('ba_psb')) {
+                  $error = array('error' => $this->upload->display_errors());
+                  echo "<script>alert('Berita acara gagal di-upload')</script>";
+              }else {
+                  $data = array('upload_data' => $this->upload->data());
+                  echo "<script>alert('Berita acara berhasil ditambahkan')</script>";
+              }
+          } 
+
+      $data = array(
+            'ba' => $fileba
+            // 'time_upload' => today() (sudah tak coba pake ini langsung tapi error Div, maafkan)
+      );
+      $where = array(
+        'nomor_speedy' => $this->input->post('nomor_speedy')
+      );
+      // $this->load->model('modelrekon');
+      $this->modelrekon->get_ba('data_rekon', $data, $where);
+      redirect('rekon/show_data','refresh');
+
+    }
 }
 
 //echo $nomor_speedy . " ";

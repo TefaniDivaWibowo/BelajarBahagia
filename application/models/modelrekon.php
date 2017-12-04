@@ -25,5 +25,11 @@
       $query  = $this->db->get();
       return $query->result_array();
     }
+
+    public function get_ba($table, $data, $where){
+        $this->db->update($table, $data, $where); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
+        
+    }
+
   }
 ?>
