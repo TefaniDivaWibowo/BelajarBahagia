@@ -74,12 +74,12 @@ class Rekon extends CI_Controller {
             $alamat       = $rowData[0][21];
             $sumber_order = "ms2n";
 
-            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
+            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
               mdf         = excluded.mdf, 
               nomor_pots  = excluded.nomor_pots, 
               nama        = excluded.nama,  
               alamat      = excluded.alamat,
-              sumber_order= excluded.sumber_order,';
+              sumber_order= excluded.sumber_order';
 
             $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order));
             
@@ -382,6 +382,36 @@ class Rekon extends CI_Controller {
       $this->load->view('aside');
       $this->load->view('rekon/upload_ba', $data);
       $this->load->view('footer');
+    }
+
+    public function uploadfileba(){
+      $fileba = $_FILES['ba_psb']['name'];
+          if($fileba == ""){
+            $fileba = NULL;
+          }else{
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'pdf|jpg|png|doc|docx';
+            $this->load->library('upload', $config);   
+              if (!$this->upload->do_upload('ba_psb')) {
+                  $error = array('error' => $this->upload->display_errors());
+                  echo "<script>alert('Berita acara gagal di-upload')</script>";
+              }else {
+                  $data = array('upload_data' => $this->upload->data());
+                  echo "<script>alert('Berita acara berhasil ditambahkan')</script>";
+              }
+          } 
+
+      $data = array(
+            'ba' => $fileba
+            // 'time_upload' => today() (sudah tak coba pake ini langsung tapi error Div, maafkan)
+      );
+      $where = array(
+        'nomor_speedy' => $this->input->post('nomor_speedy')
+      );
+      // $this->load->model('modelrekon');
+      $this->modelrekon->get_ba('data_rekon', $data, $where);
+      redirect('rekon/show_data','refresh');
+
     }
 }
 
