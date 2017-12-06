@@ -9,7 +9,9 @@ class Rekon extends CI_Controller {
       $this->load->library('PHPExcel');
       $this->load->model('modelrekon');
       $this->load->library('session');
-    }
+
+      date_default_timezone_set("Asia/Jakarta");
+  }
 
     public function import3pms2n(){ //All data use Data HR Sec 
       $msg    = $this->uri->segment(3);
@@ -73,15 +75,17 @@ class Rekon extends CI_Controller {
             $nama         = $rowData[0][19];
             $alamat       = $rowData[0][21];
             $sumber_order = "ms2n";
+            $time_upload  = date("d F Y h:i:sa");
 
-            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
+            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order, time_upload) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
               mdf         = excluded.mdf, 
               nomor_pots  = excluded.nomor_pots, 
               nama        = excluded.nama,  
               alamat      = excluded.alamat,
-              sumber_order= excluded.sumber_order';
+              sumber_order= excluded.sumber_order,
+              time_upload = excluded.time_upload';
 
-            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order));
+            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order, $time_upload));
             
             //$insert = $this->db->insert("data_rekon", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
             //delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
@@ -152,15 +156,17 @@ class Rekon extends CI_Controller {
             $nama         = $rowData[0][21];
             $alamat       = $rowData[0][23];
             $sumber_order = "ms2n";
+            $time_upload  = date("d F Y h:i:sa");
 
-            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
+            $sql = 'INSERT INTO data_rekon (mdf, nomor_pots, nomor_speedy, nama, alamat, sumber_order, time_upload) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET 
                   mdf            = excluded.mdf, 
                   nomor_pots     = excluded.nomor_pots, 
                   nama           = excluded.nama,  
                   alamat         = excluded.alamat,
-                  sumber_order   = excluded.sumber_order';
+                  sumber_order   = excluded.sumber_order,
+                  time_upload    = excluded.time_upload';
 
-            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order));
+            $query = $this->db->query($sql, array( $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $sumber_order, $time_upload));
 
         }
         
@@ -233,10 +239,11 @@ class Rekon extends CI_Controller {
             $alamat            = $rowData[0][8];
             $odp               = $rowData[0][21];
             $sumber_order      = "sc";
+            $time_upload       = date("d F Y h:i:sa");
 
-            $sql = 'INSERT INTO data_rekon (sc, mdf, nomor_pots, nomor_speedy, nama, alamat, odp, sumber_order) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET sc = excluded.sc, mdf = excluded.mdf, nomor_pots = excluded.nomor_pots, nama = excluded.nama,  alamat = excluded.alamat, odp = excluded.odp, sumber_order = excluded.sumber_order';
+            $sql = 'INSERT INTO data_rekon (sc, mdf, nomor_pots, nomor_speedy, nama, alamat, odp, sumber_order, time_upload) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (nomor_speedy) DO UPDATE SET sc = excluded.sc, mdf = excluded.mdf, nomor_pots = excluded.nomor_pots, nama = excluded.nama,  alamat = excluded.alamat, odp = excluded.odp, sumber_order = excluded.sumber_order, time_upload = excluded.time_upload';
 
-            $query = $this->db->query($sql, array($sc, $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $odp, $sumber_order));
+            $query = $this->db->query($sql, array($sc, $mdf, $nomor_pots, $nomor_speedy, $nama, $alamat, $odp, $sumber_order, $time_upload));
             
             //$insert = $this->db->insert("data_rekon", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
             //delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload

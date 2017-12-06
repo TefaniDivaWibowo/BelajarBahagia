@@ -58,7 +58,7 @@
             <h3 class="box-title">Import File</h3>
           </div>
           <div class="box-body">
-            <form action="<?=base_url('index.php/rekon/importfile3pms2n')?>" method="post" enctype="multipart/form-data">
+            <form action="<?=base_url('index.php/lop/importfilelop')?>" method="post" enctype="multipart/form-data">
                 <input type="file" name="fileImport" id="fileImport" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                 <?php
                   if ($_alert != NULL) {

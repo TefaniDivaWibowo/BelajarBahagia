@@ -15,6 +15,27 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        <div class="box-body">
+                <div class="form-group">
+                  <form method="POST" action="<?php echo base_url('index.php/lop/datarek')?>" >
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <select class="form-control select2" style="width: 100%;" name="area">
+                          <?php
+                              echo "<option selected='selected' value='all'>All Area</option>";
+                             
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="submit" name="submit" class="btn btn-primary" value="Submit" >
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">

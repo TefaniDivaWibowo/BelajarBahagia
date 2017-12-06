@@ -28,7 +28,7 @@
                 <div class="form-group">
                 
                   <!-- <label for="inputEmail3" class="col-sm-1 control-label" style="padding-top: 7px;">BULAN</label> -->
-                  <form method="POST" action="<?php echo base_url('index.php/COGS/cek_evaluasi')?>" >
+                  <form method="POST" action="<?php echo base_url('index.php/cogs/cek_evaluasi')?>" >
                     <div class="col-sm-3">
                       <div class="form-group">
                         <select class="form-control select2" style="width: 100%;" name="area">

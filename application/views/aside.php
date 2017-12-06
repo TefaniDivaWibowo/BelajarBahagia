@@ -269,6 +269,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?=base_url('index.php/HrPerformance/import');?>"><i class="fa fa-circle-o"></i> Import Data HR</a></li>
+                <li><a href="<?=base_url('index.php/HrPerformance/importhr_wper');?>"><i class="fa fa-circle-o"></i> Import Data HR 2</a></li>
                 <li><a href="<?=base_url('index.php/HrPerformance')?>"><i class="fa fa-circle-o"></i> Import Data PBS</a></li>
               </ul>
             </li>

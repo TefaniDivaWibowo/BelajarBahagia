@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct levelript access allowed');
 
 class HrPerformance extends CI_Controller {
 	function __construct() {
@@ -99,6 +99,128 @@ class HrPerformance extends CI_Controller {
         redirect(base_url('HrPerformance/import/success'));
     }
 
+    public function importhr_wper(){ //All data use Data HR Sec 
+        $msg    = $this->uri->segment(3);
+        $alert  = '';
+        if($msg == 'success'){
+            $alert  = 'Success!!';
+        }
+        $data['_alert'] = $alert;
+
+        $this->load->view('header');
+        $this->load->view('aside');
+        $this->load->view('hr/import_data_hr_wper', $data);
+        $this->load->view('footer');
+    }
+
+    public function importfilehr_wper(){ //Import file
+        $fileName = time() . $_FILES['fileImport']['name'];                     // Sesuai dengan nama Tag Input/Upload
+
+        $this->db->empty_table('data_hr');
+        $this->db->empty_table('data_hr_sec');
+
+        $config['upload_path'] = './fileExcel/';                                // Buat folder dengan nama "fileExcel" di root folder
+        $config['file_name'] = $fileName;
+        $config['allowed_types'] = 'xls|xlsx|csv';
+        $config['max_size'] = 10000;
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('fileImport'))
+            $this->upload->display_errors();
+
+        $media = $this->upload->data('fileImport');
+        $inputFileName = './fileExcel/' . $media['file_name'];
+
+        try {
+            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+            $objPHPExcel = $objReader->load($inputFileName);
+        } catch (Exception $e) {
+            die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+        }
+
+        $sheet = $objPHPExcel->getSheet(0);
+        $highestRow = $sheet->getHighestRow();
+        $highestColumn = $sheet->getHighestColumn();
+
+        for ($row = 2; $row <= $highestRow; $row++) {                           // Read a row of data into an array                 
+            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
+            
+            /*$data = array(                                                      // Sesuaikan sama nama kolom tabel di database
+                "object_id"     => $rowData[0][0],
+                "position_name" => $rowData[0][1],
+                "nik"           => $rowData[0][2],
+                "nama"          => $rowData[0][3],
+                "psa"           => $rowData[0][4],
+                "witel"         => $rowData[0][5],
+                "teritory"      => $rowData[0][6],
+                "regional"      => $rowData[0][7],
+                "level"         => $rowData[0][8],
+                "bizpart_id"    => $rowData[0][9],
+                "direktorat"    => $rowData[0][10],
+                "unit"          => $rowData[0][11],
+                "sub_unit"      => $rowData[0][12],
+                "group"         => $rowData[0][13],
+                "sub_group"     => $rowData[0][14],
+                "group_fungsi"  => $rowData[0][15],
+                "cost_center"   => $rowData[0][16],
+                "status_pgs"    => $rowData[0][17],
+            );
+            
+            $insert = $this->db->insert("data_hr", $data);                   // Sesuaikan nama dengan nama tabel untuk melakukan insert data
+            $insert = $this->db->insert("data_hr_sec", $data); 
+            $update = $this->db->query("UPDATE data_hr_sec SET status_naker = 'aktif' WHERE data_hr_sec.object_id IN (SELECT object_id FROM data_hr)");
+            $update1 = $this->db->query("UPDATE data_hr_sec SET status_naker = 'tidak aktif' WHERE data_hr_sec.object_id NOT IN (SELECT object_id FROM data_hr)");*/
+
+            $object_id     = $rowData[0][0];
+            $position_name = $rowData[0][1];
+            $nik           = $rowData[0][2];
+            $nama          = $rowData[0][3];
+            $psa           = $rowData[0][4];
+            $witel         = $rowData[0][5];
+            $teritory      = $rowData[0][6];
+            $regional      = $rowData[0][7];
+            $level         = $rowData[0][8];
+            $bizpart_id    = $rowData[0][9];
+            $direktorat    = $rowData[0][10];
+            $unit          = $rowData[0][11];
+            $sub_unit      = $rowData[0][12];
+            $group         = $rowData[0][13];
+            $sub_group     = $rowData[0][14];
+            $group_fungsi  = $rowData[0][15];
+            $cost_center   = $rowData[0][16];
+            $status_pgs    = $rowData[0][17];
+            $periode       = date("mY");
+
+            $sql = 'INSERT INTO data_hr_wper (object_id, position_name, nik, nama, psa, witel, teritory, regional, level, bizpart_id, direktorat, unit, sub_unit, group, sub_group, group_fungsi, cost_center, status_pgs, periode) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (nik) DO UPDATE SET 
+              object_id     = excluded.object_id, 
+              position_name = excluded.position_name, 
+              nama          = excluded.nama,  
+              psa           = excluded.psa,
+              witel         = excluded.witel,
+              teritory      = excluded.teritory,
+              regional      = excluded.regional, 
+              level         = excluded.level, 
+              bizpart_id    = excluded.bizpart_id, 
+              unit          = excluded.unit,  
+              sub_unit      = excluded.sub_unit, 
+              group         = excluded.group,
+              sub_group     = excluded.sub_group,
+              group_fungsi  = excluded.group_fungsi,
+              cost_center   = excluded.cost_center,
+              status_pgs    = excluded.status_pgs,
+              periode       = excluded.periode';
+
+            $query = $this->db->query($sql, array( $object_id, $position_name, $nik, $unit, $psa, $witel, $teritory, $regional ,$level ,$bizpart_id, $direktorat , $unit, $sub_unit, $group, $sub_group, $group_fungsi , $cost_center, $status_pgs , $periode));
+
+            //delete_files($media['file_path']);                                  // menghapus semua file .xls yang diupload
+        }
+        
+        redirect(base_url('HrPerformance/import/success'));
+    }
+
 	public function detail($id){
 		$data['data_hr'] 	= $this->hr->get_data_currently($id); //All data use Data HR Sec 
 		$this->load->view('header');
@@ -188,11 +310,11 @@ class HrPerformance extends CI_Controller {
  
                 if (!$this->upload->do_upload('filePhoto')) {
                         $error = array('error' => $this->upload->display_errors());
-                        echo "<script>alert('Foto profil baru gagal di-upload')</script>";
+                        echo "<levelript>alert('Foto profil baru gagal di-upload')</levelript>";
                 }
                 else {
                         $data = array('upload_data' => $this->upload->data());
-                        echo "<script>alert('Foto profil baru berhasil ditambahkan')</script>";
+                        echo "<levelript>alert('Foto profil baru berhasil ditambahkan')</levelript>";
                 }
 
         $data = array(
@@ -205,7 +327,7 @@ class HrPerformance extends CI_Controller {
         redirect(base_url('index.php/HrPerformance/view_edit/' . $id),'refresh');
     }
 
-    function input_kontrak_sm(){
+    function input_ksub_grouprak_sm(){
         $nik_sm     = $this->input->post('nik');
 
         $data['data_sm']    = $this->hr->get_data_sm($nik_sm);
@@ -217,11 +339,11 @@ class HrPerformance extends CI_Controller {
 
         $this->load->view('header');
         $this->load->view('aside');
-        $this->load->view('hr/input_kontrak_sm', $data);
+        $this->load->view('hr/input_ksub_grouprak_sm', $data);
         $this->load->view('footer');
     }
 
-    function input_kontrak_tl(){
+    function input_ksub_grouprak_tl(){
          $nik_tl     = $this->input->post('nik');
 
         $data['data_tl']    = $this->hr->get_data_sm($nik_tl);
@@ -229,21 +351,21 @@ class HrPerformance extends CI_Controller {
 
         $this->load->view('header');
         $this->load->view('aside');
-        $this->load->view('hr/input_kontrak_tl', $data);
+        $this->load->view('hr/input_ksub_grouprak_tl', $data);
         $this->load->view('footer');
     }
 
-    function kontrak_management_sm(){
+    function ksub_grouprak_management_sm(){
         $this->load->view('header');
         $this->load->view('aside');
-        $this->load->view('hr/kontrak_management_sm');
+        $this->load->view('hr/ksub_grouprak_management_sm');
         $this->load->view('footer');
     }
 
-     function kontrak_management_tl(){
+     function ksub_grouprak_management_tl(){
         $this->load->view('header');
         $this->load->view('aside');
-        $this->load->view('hr/kontrak_management_tl');
+        $this->load->view('hr/ksub_grouprak_management_tl');
         $this->load->view('footer');
     }
     
